@@ -218,7 +218,7 @@ public class UserProfileActivity extends Activity implements View.OnClickListene
                     Logger.e(getClass().getSimpleName() + ":  Error while FROM_GALLERY");
                 }
             }
-            
+
         }
     }
 }
