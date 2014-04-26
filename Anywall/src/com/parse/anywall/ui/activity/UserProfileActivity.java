@@ -142,7 +142,7 @@ public class UserProfileActivity extends Activity implements View.OnClickListene
             }
         }
     }
-
+ 
     private void showImagePickerDialog(final Activity act, final boolean isClose) {
         AlertDialog.Builder myAlertDialog = new AlertDialog.Builder(act);
         myAlertDialog.setTitle(act.getString(R.string.dialog_picture_title));
