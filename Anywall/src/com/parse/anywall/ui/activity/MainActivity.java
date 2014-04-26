@@ -1,6 +1,6 @@
 package com.parse.anywall.ui.activity;
 
-import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -34,13 +34,12 @@ import com.parse.*;
 import com.parse.anywall.Application;
 import com.parse.anywall.R;
 import com.parse.anywall.model.AnywallPost;
-import com.parse.anywall.model.Tag;
 
 import java.util.*;
 
 public class MainActivity extends CityHelperBaseActivity implements LocationListener,
         GooglePlayServicesClient.ConnectionCallbacks,
-        GooglePlayServicesClient.OnConnectionFailedListener {
+        GooglePlayServicesClient.OnConnectionFailedListener, MenuItem.OnMenuItemClickListener {
 
     /*
      * Define a request code to send to Google Play services This code is returned in
@@ -120,7 +119,6 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
     private ParseQueryAdapter<AnywallPost> posts;
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -180,7 +178,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
         posts.setPaginationEnabled(false);
 
         // Attach the query adapter to the view
-        ListView postsView = (ListView) this.findViewById(R.id.postsView);
+        ListView postsView = (ListView) findViewById(R.id.postsView) ;
         postsView.setAdapter(posts);
 
         // Set up the handler for an item's selection
@@ -344,7 +342,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
 
                 switch (resultCode) {
                     // If Google Play services resolved the problem
-                    case Activity.RESULT_OK:
+                    case FragmentActivity.RESULT_OK:
 
                         if (Application.APPDEBUG) {
                             // Log the result
@@ -736,21 +734,49 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_activity_menu, menu);
-
+        getMenuInflater().inflate(R.menu.main, menu);
+        menu.findItem(R.id.action_user).setOnMenuItemClickListener(this);
+        menu.findItem(R.id.action_settings).setOnMenuItemClickListener(this);
+        menu.findItem(R.id.menu_item_add_task).setOnMenuItemClickListener(this);
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
 
+    /*
+         * Show a dialog returned by Google Play services for the connection error code
+         */
+    private void showErrorDialog(int errorCode) {
+        // Get the error dialog from Google Play services
+        Dialog errorDialog =
+                GooglePlayServicesUtil.getErrorDialog(errorCode, this,
+                        CONNECTION_FAILURE_RESOLUTION_REQUEST);
+
+        // If Google Play services can provide an error dialog
+        if (errorDialog != null) {
+
+            // Create a new DialogFragment in which to show the error dialog
+            ErrorDialogFragment errorFragment = new ErrorDialogFragment();
+
+            // Set the dialog in the DialogFragment
+            errorFragment.setDialog(errorDialog);
+
+            // Show the error dialog in the DialogFragment
+            errorFragment.show(getSupportFragmentManager(), Application.APPTAG);
+        }
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_item_settings:
+            case (R.id.action_settings): {
                 startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 return true;
-
-            case R.id.menu_item_add_task:
-
+            }
+            case (R.id.action_user): {
+                startActivity(new Intent(MainActivity.this, UserProfileActivity.class));
+                return true;
+            }
+            case (R.id.menu_item_add_task): {
 
                 // Only allow posts if we have a location
                 Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
@@ -779,32 +805,9 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
 
                 return true;
 
-            default:
-                return super.onOptionsItemSelected(item);
+            }
         }
-    }
-
-    /*
-         * Show a dialog returned by Google Play services for the connection error code
-         */
-    private void showErrorDialog(int errorCode) {
-        // Get the error dialog from Google Play services
-        Dialog errorDialog =
-                GooglePlayServicesUtil.getErrorDialog(errorCode, this,
-                        CONNECTION_FAILURE_RESOLUTION_REQUEST);
-
-        // If Google Play services can provide an error dialog
-        if (errorDialog != null) {
-
-            // Create a new DialogFragment in which to show the error dialog
-            ErrorDialogFragment errorFragment = new ErrorDialogFragment();
-
-            // Set the dialog in the DialogFragment
-            errorFragment.setDialog(errorDialog);
-
-            // Show the error dialog in the DialogFragment
-            errorFragment.show(getSupportFragmentManager(), Application.APPTAG);
-        }
+        return false;
     }
 
     /*

@@ -18,4 +18,15 @@
     <string name="post">Post</string>
     <string name="post_out_of_range">Can\'t view post! Get closer.</string>
 
+    <string name="dialog_picture_title">Picture choose option</string>
+    <string name="dialog_picture_message">Take picture from</string>
+    <string name="dialog_picture_gallery">Gallery</string>
+    <string name="dialog_picture_camera">Camera</string>
+
+    <string name="pref_profile">PROFILE</string>
+
+    <string name="pref_set_avatar">Set avatar</string>
+    <string name="pref_email">E-mail</string>
+    <string name="pref_name">Name</string>
+
 </resources>
