@@ -44,3 +44,5 @@ server.config
 
 # Local configuration file (sdk path, etc)
 local.properties
+
+.idea/workspace.xml

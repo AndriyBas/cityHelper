@@ -1,8 +1,6 @@
 package com.parse.anywall.model;
 
 import com.parse.anywall.model.photo.Photo;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.Date;
 import java.util.UUID;
@@ -17,7 +15,7 @@ public class Issue {
     private static final String JSON_STATUS = "tratus";
     private static final String JSON_DATE = "date";
     private static final String JSON_PHOTO = "photo";
-    private
+
     private static final String JSON_TAGS = "tags";
 
 
@@ -34,39 +32,6 @@ public class Issue {
     }
 
 
-    public Issue(JSONObject json) throws JSONException {
-        mId = UUID.fromString(json.getString(JSON_ID));
-        mTitle = json.getString(JSON_TITLE);
-        mSolved = json.getBoolean(JSON_SOLVED);
-        mDate = new Date(json.getLong(JSON_DATE));
-
-        if (json.has(JSON_SUSPECT)) {
-            mSuspect = json.getString(JSON_SUSPECT);
-        }
-
-        if (json.has(JSON_PHOTO)) {
-            mPhoto = new Photo(json.getJSONObject(JSON_PHOTO));
-        }
-    }
-
-
-    public JSONObject toJSON() throws JSONException {
-        JSONObject object = new JSONObject();
-
-        object.put(JSON_ID, mId.toString());
-        object.put(JSON_TITLE, mTitle);
-        object.put(JSON_SOLVED, mSolved);
-        object.put(JSON_DATE, mDate.getTime());
-
-        if (mSuspect != null) {
-            object.put(JSON_SUSPECT, mSuspect);
-        }
-
-        if (mPhoto != null) {
-            object.put(JSON_PHOTO, mPhoto.toJSON());
-        }
-        return object;
-    }
 
     public UUID getId() {
         return mId;
@@ -88,13 +53,7 @@ public class Issue {
         mDate = date;
     }
 
-    public boolean isSolved() {
-        return mSolved;
-    }
 
-    public void setSolved(boolean solced) {
-        mSolved = solced;
-    }
 
     public Photo getPhoto() {
         return mPhoto;

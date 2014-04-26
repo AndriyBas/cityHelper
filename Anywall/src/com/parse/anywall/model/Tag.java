@@ -25,4 +25,8 @@ public class Tag extends ParseObject {
     public void incCount() {
         put("count", getCount() + 1);
     }
+
+    public void setCount(int count) {
+        put("count", count);
+    }
 }
