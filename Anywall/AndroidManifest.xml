@@ -76,6 +76,7 @@
             android:name=".ui.activity.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
+        <activity android:name=".ui.activity.CityHelperBaseActivity"/>
     </application>
 
 </manifest>
