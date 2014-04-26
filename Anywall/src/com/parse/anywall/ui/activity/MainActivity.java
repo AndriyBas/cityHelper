@@ -40,7 +40,7 @@ import java.util.*;
 
 public class MainActivity extends CityHelperBaseActivity implements LocationListener,
         GooglePlayServicesClient.ConnectionCallbacks,
-        GooglePlayServicesClient.OnConnectionFailedListener {
+        GooglePlayServicesClient.OnConnectionFailedListener, OnMenuItemClickListener {
 
     /*
      * Define a request code to send to Google Play services This code is returned in
@@ -189,16 +189,16 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
                 map.getMap().animateCamera(
                         CameraUpdateFactory.newLatLng(new LatLng(item.getLocation().getLatitude(), item
                                 .getLocation().getLongitude())), new CancelableCallback() {
-                            public void onFinish() {
-                                Marker marker = mapMarkers.get(item.getObjectId());
-                                if (marker != null) {
-                                    marker.showInfoWindow();
-                                }
-                            }
-
-                            public void onCancel() {
-                            }
+                    public void onFinish() {
+                        Marker marker = mapMarkers.get(item.getObjectId());
+                        if (marker != null) {
+                            marker.showInfoWindow();
                         }
+                    }
+
+                    public void onCancel() {
+                    }
+                }
                 );
                 Marker marker = mapMarkers.get(item.getObjectId());
                 if (marker != null) {
@@ -736,12 +736,8 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
         getMenuInflater().inflate(R.menu.main, menu);
 
 
-        menu.findItem(R.id.action_settings).setOnMenuItemClickListener(new OnMenuItemClickListener() {
-            public boolean onMenuItemClick(MenuItem item) {
-                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-                return true;
-            }
-        });
+        menu.findItem(R.id.action_user).setOnMenuItemClickListener(this);
+        menu.findItem(R.id.action_settings).setOnMenuItemClickListener(this);
         return true;
     }
 
@@ -766,6 +762,21 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
             // Show the error dialog in the DialogFragment
             errorFragment.show(getSupportFragmentManager(), Application.APPTAG);
         }
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
+            case (R.id.action_settings): {
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                return true;
+            }
+            case(R.id.action_user):{
+                startActivity(new Intent(MainActivity.this, UserProfileActivity.class));
+                return true;
+            }
+        }
+        return false;
     }
 
     /*
