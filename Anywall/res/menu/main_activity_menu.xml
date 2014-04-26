@@ -1,16 +1,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+
             android:id="@+id/menu_item_add_task"
             android:showAsAction="always|withText"
             android:icon="@android:drawable/ic_input_add"
-            android:title="Add post"/>
+            android:title="Add post"
+            />
+
     <item
-            android:id="@+id/action_user"
-            android:showAsAction="never"
-            android:title="User Profile"/>
-    <item
-            android:id="@+id/action_settings"
+            android:id="@+id/menu_item_settings"
             android:orderInCategory="100"
             android:showAsAction="never"
             android:title="@string/action_settings"/>
