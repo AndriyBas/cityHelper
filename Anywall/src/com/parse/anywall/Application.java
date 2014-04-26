@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import com.parse.Parse;
 import com.parse.ParseObject;
 import com.parse.anywall.model.AnywallPost;
+import com.parse.anywall.model.Tag;
 
 public class Application extends android.app.Application {
   // Debugging switch
@@ -27,6 +28,7 @@ public class Application extends android.app.Application {
     super.onCreate();
 
     ParseObject.registerSubclass(AnywallPost.class);
+    ParseObject.registerSubclass(Tag.class);
     Parse.initialize(this, "iTUHhvYuaOdpVQz5aQkvnJNEd7hxZTyBxqygUPXK",
         "Le3XjYFDDJ5ZzOkUSZbqzO1ybdYfjxdqgdwAxJ40");
     preferences = getSharedPreferences("com.parse.anywall", Context.MODE_PRIVATE);

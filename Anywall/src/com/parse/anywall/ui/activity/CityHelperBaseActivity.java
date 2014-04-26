@@ -49,12 +49,10 @@ public class CityHelperBaseActivity extends SlidingFragmentActivity {
 //        sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
 
 
-
         // SlidingMenu saves its state
         if (savedInstanceState == null) {
 
             mMenuRightFragment = new SlidingMenuRightFragment();
-
 
 
             this.getSupportFragmentManager()
@@ -75,7 +73,7 @@ public class CityHelperBaseActivity extends SlidingFragmentActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_fragment_menu, menu);
+//        getMenuInflater().inflate(R.menu.main_fragment_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -86,11 +84,11 @@ public class CityHelperBaseActivity extends SlidingFragmentActivity {
                 getSlidingMenu().toggle();
                 return true;*/
 
-            case R.id.sliding_menu_right_courses_open:
+        /*    case R.id.sliding_menu_right_courses_open:
                 if (getSlidingMenu().isMenuShowing()) {
                     toggle();
                 }
-                return true;
+                return true;*/
         }
         return super.onOptionsItemSelected(item);
     }

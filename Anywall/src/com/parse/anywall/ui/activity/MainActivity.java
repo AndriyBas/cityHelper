@@ -34,6 +34,7 @@ import com.parse.*;
 import com.parse.anywall.Application;
 import com.parse.anywall.R;
 import com.parse.anywall.model.AnywallPost;
+import com.parse.anywall.model.Tag;
 
 import java.util.*;
 
@@ -117,6 +118,8 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
 
     // Adapter for the Parse query
     private ParseQueryAdapter<AnywallPost> posts;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -733,7 +736,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.main_activity_menu, menu);
 
         return true;
     }
@@ -742,9 +745,40 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            case R.id.menu_item_settings:
                 startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 return true;
+
+            case R.id.menu_item_add_task:
+
+
+                // Only allow posts if we have a location
+                Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
+
+                if (myLoc == null) {
+                    Toast.makeText(MainActivity.this,
+                            "Please try again after your location appears on the map.", Toast.LENGTH_LONG).show();
+                    return true;
+                }
+
+
+                MarkerOptions markerOpts =
+                        new MarkerOptions().position(new LatLng(myLoc.getLatitude(), myLoc.getLongitude()));
+
+                markerOpts =
+                        markerOpts.title("New issue, click to edit")
+                                .snippet("Drag to change location")
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))
+                                .draggable(true);
+
+                Marker marker = map.getMap().addMarker(markerOpts);
+
+                marker.showInfoWindow();
+
+                updateZoom(new LatLng(myLoc.getLatitude(), myLoc.getLongitude()));
+
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
