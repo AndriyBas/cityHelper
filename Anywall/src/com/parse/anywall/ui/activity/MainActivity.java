@@ -26,9 +26,10 @@ import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.CancelableCallback;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
-import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.*;
 import com.parse.*;
 import com.parse.anywall.Application;
@@ -39,7 +40,7 @@ import java.util.*;
 
 public class MainActivity extends CityHelperBaseActivity implements LocationListener,
         GooglePlayServicesClient.ConnectionCallbacks,
-        GooglePlayServicesClient.OnConnectionFailedListener, MenuItem.OnMenuItemClickListener {
+        GooglePlayServicesClient.OnConnectionFailedListener, MenuItem.OnMenuItemClickListener, GoogleMap.OnInfoWindowClickListener {
 
     /*
      * Define a request code to send to Google Play services This code is returned in
@@ -92,7 +93,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
      * Other class member variables
      */
     // Map fragment
-    private SupportMapFragment map;
+    private MapFragment map;
 
     // Represents the circle around a map
     private Circle mapCircle;
@@ -222,7 +223,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
         });
 
         // Set up the map fragment
-        map = (SupportMapFragment) this.getSupportFragmentManager().findFragmentById(R.id.map);
+        map = (MapFragment) this.getFragmentManager().findFragmentById(R.id.map);
         // Enable the current location "blue dot"
         map.getMap().setMyLocationEnabled(true);
         // Set up the camera change handler
@@ -232,6 +233,9 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
                 doMapQuery();
             }
         });
+
+        map.getMap().setOnInfoWindowClickListener(this);
+
 
         // Set up the handler for the post button click
         Button postButton = (Button) findViewById(R.id.postButton);
@@ -811,7 +815,9 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
                                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))
                                 .draggable(true);
 
+
                 Marker marker = map.getMap().addMarker(markerOpts);
+
 
                 marker.showInfoWindow();
 
@@ -822,6 +828,12 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
             }
         }
         return false;
+    }
+
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        Intent i = new Intent(MainActivity.this, IssueActivity.class);
+        startActivity(i);
     }
 
     /*
