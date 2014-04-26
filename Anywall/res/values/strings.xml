@@ -18,4 +18,9 @@
     <string name="post">Post</string>
     <string name="post_out_of_range">Can\'t view post! Get closer.</string>
 
+
+    <string name="issue_title_hint">Enter a title for the isuue.</string>
+    <string name="issue_title_lable">TITLE</string>
+    <string name="issue_details_lable">DETAILS</string>
+    <string name="take">Take!</string>
 </resources>
