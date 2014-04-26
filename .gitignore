@@ -36,6 +36,7 @@ server.config
 # built application files
 *.apk
 *.ap_
+.idea/
 
 # Java class files
 *.class
@@ -44,4 +45,4 @@ server.config
 # Local configuration file (sdk path, etc)
 local.properties
 
-.idea/*
+.idea/workspace.xml

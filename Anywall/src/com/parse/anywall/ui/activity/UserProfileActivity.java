@@ -17,7 +17,7 @@ import com.parse.anywall.Const;
 import com.parse.anywall.Logger;
 import com.parse.anywall.R;
 import com.parse.anywall.model.ImageProcessor;
-import eu.janmuller.android.simplecropimage.CropImage;
+
 
 public class UserProfileActivity extends Activity implements View.OnClickListener {
 
@@ -218,15 +218,7 @@ public class UserProfileActivity extends Activity implements View.OnClickListene
                     Logger.e(getClass().getSimpleName() + ":  Error while FROM_GALLERY");
                 }
             }
-            if (requestCode == Const.CROP_IMAGE) {
-                Logger.d("requestCode == CROP_IMAGE");
-                String path = data.getStringExtra(CropImage.IMAGE_PATH);
-                if (path == null) {
-                    return;
-                }
-                bitmapAvatar = BitmapFactory.decodeFile(ImageProcessor.getTempFile(this).getPath());
-                avatar.setImageBitmap(bitmapAvatar);
-            }
+            
         }
     }
 }

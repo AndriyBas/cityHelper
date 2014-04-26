@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/Anywall/Anywall.iml" filepath="$PROJECT_DIR$/Anywall/Anywall.iml" />
       <module fileurl="file://$PROJECT_DIR$/SlidingMenuLibrary/SlidingMenuLibrary.iml" filepath="$PROJECT_DIR$/SlidingMenuLibrary/SlidingMenuLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/google_play_services/libproject/google-play-services_lib/google-play-services_lib.iml" filepath="$PROJECT_DIR$/google_play_services/libproject/google-play-services_lib/google-play-services_lib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/simple-crop-image-lib/simple-crop-image-lib.iml" filepath="$PROJECT_DIR$/simple-crop-image-lib/simple-crop-image-lib.iml" />
     </modules>
   </component>
 </project>

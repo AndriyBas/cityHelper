@@ -17,7 +17,6 @@
     <orderEntry type="module" module-name="SlidingMenuLibrary" />
     <orderEntry type="library" name="libs" level="project" />
     <orderEntry type="library" name="google-play-services" level="project" />
-    <orderEntry type="module" module-name="simple-crop-image-lib" />
   </component>
 </module>
 
