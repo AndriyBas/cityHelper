@@ -1,4 +1,4 @@
-package com.parse.anywall;
+package com.parse.anywall.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;

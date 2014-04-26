@@ -1,4 +1,4 @@
-package com.parse.anywall;
+package com.parse.anywall.model;
 
 import com.parse.ParseClassName;
 import com.parse.ParseGeoPoint;

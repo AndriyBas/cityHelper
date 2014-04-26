@@ -1,4 +1,4 @@
-package com.parse.anywall;
+package com.parse.anywall.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.parse.ParseUser;
+import com.parse.anywall.Application;
+import com.parse.anywall.R;
 
 /**
  * Activity that displays the settings screen.

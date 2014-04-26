@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 import com.parse.Parse;
 import com.parse.ParseObject;
+import com.parse.anywall.model.AnywallPost;
 
 public class Application extends android.app.Application {
   // Debugging switch

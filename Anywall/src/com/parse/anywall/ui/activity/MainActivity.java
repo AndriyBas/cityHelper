@@ -1,4 +1,4 @@
-package com.parse.anywall;
+package com.parse.anywall.ui.activity;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -59,6 +59,9 @@ import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.parse.anywall.Application;
+import com.parse.anywall.R;
+import com.parse.anywall.model.AnywallPost;
 
 public class MainActivity extends FragmentActivity implements LocationListener,
     GooglePlayServicesClient.ConnectionCallbacks,

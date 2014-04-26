@@ -1,4 +1,4 @@
-package com.parse.anywall;
+package com.parse.anywall.ui.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.anywall.R;
 
 /**
  * Activity which displays a login screen to the user, offering registration as well.
