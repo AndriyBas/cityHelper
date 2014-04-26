@@ -14,7 +14,6 @@ import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -84,10 +83,10 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
     private static final float OFFSET_CALCULATION_ACCURACY = 0.01f;
 
     // Maximum results returned from a Parse query
-    private static final int MAX_POST_SEARCH_RESULTS = 20;
+    private static final int MAX_POST_SEARCH_RESULTS = 100;
 
     // Maximum post search radius for map in kilometers
-    private static final int MAX_POST_SEARCH_DISTANCE = 100;
+    private static final int MAX_POST_SEARCH_DISTANCE = 1000;
 
     /*
      * Other class member variables
@@ -161,12 +160,12 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
             @Override
             public View getItemView(AnywallPost post, View view, ViewGroup parent) {
                 if (view == null) {
-                    view = View.inflate(getContext(), R.layout.anywall_post_item, null);
+                    view = View.inflate(getContext(), R.layout.item_task_post, null);
                 }
-                TextView contentView = (TextView) view.findViewById(R.id.contentView);
-                TextView usernameView = (TextView) view.findViewById(R.id.usernameView);
-                contentView.setText(post.getText());
-                usernameView.setText(post.getUser().getUsername());
+//                TextView contentView = (TextView) view.findViewById(R.id.contentView);
+//                TextView usernameView = (TextView) view.findViewById(R.id.usernameView);
+//                contentView.setText(post.getText());
+//                usernameView.setText(post.getUser().getUsername());
                 return view;
             }
         };
@@ -591,7 +590,8 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
                         // Display a green marker with the post information
                         markerOpts =
                                 markerOpts.title(post.getText()).snippet(post.getUser().getUsername())
-                                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+                                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+                                        .draggable(true);
                     }
                     // Add a new marker
                     Marker marker = map.getMap().addMarker(markerOpts);
@@ -735,19 +735,24 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
 
-
-        menu.findItem(R.id.action_settings).setOnMenuItemClickListener(new OnMenuItemClickListener() {
-            public boolean onMenuItemClick(MenuItem item) {
-                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-                return true;
-            }
-        });
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     /*
-     * Show a dialog returned by Google Play services for the connection error code
-     */
+         * Show a dialog returned by Google Play services for the connection error code
+         */
     private void showErrorDialog(int errorCode) {
         // Get the error dialog from Google Play services
         Dialog errorDialog =

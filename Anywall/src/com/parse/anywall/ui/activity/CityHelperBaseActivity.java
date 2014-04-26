@@ -17,8 +17,6 @@ public class CityHelperBaseActivity extends SlidingFragmentActivity {
 
     protected SlidingMenuRightFragment mMenuRightFragment;
 
-    protected SlidingMenu mRightMenu;
-
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -92,7 +90,6 @@ public class CityHelperBaseActivity extends SlidingFragmentActivity {
                 if (getSlidingMenu().isMenuShowing()) {
                     toggle();
                 }
-                mRightMenu.toggle();
                 return true;
         }
         return super.onOptionsItemSelected(item);
