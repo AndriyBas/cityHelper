@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="libs">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/Anywall/libs/Parse-1.4.3.jar!/" />
       <root url="jar://$PROJECT_DIR$/Anywall/libs/android-support-v4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Anywall/libs/Parse-1.4.3.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

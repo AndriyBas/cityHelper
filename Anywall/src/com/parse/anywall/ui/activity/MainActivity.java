@@ -1,6 +1,6 @@
 package com.parse.anywall.ui.activity;
 
-import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -39,7 +39,7 @@ import java.util.*;
 
 public class MainActivity extends CityHelperBaseActivity implements LocationListener,
         GooglePlayServicesClient.ConnectionCallbacks,
-        GooglePlayServicesClient.OnConnectionFailedListener {
+        GooglePlayServicesClient.OnConnectionFailedListener, MenuItem.OnMenuItemClickListener {
 
     /*
      * Define a request code to send to Google Play services This code is returned in
@@ -118,6 +118,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
     // Adapter for the Parse query
     private ParseQueryAdapter<AnywallPost> posts;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -177,7 +178,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
         posts.setPaginationEnabled(false);
 
         // Attach the query adapter to the view
-        ListView postsView = (ListView) this.findViewById(R.id.postsView);
+        ListView postsView = (ListView) findViewById(R.id.postsView) ;
         postsView.setAdapter(posts);
 
         // Set up the handler for an item's selection
@@ -341,7 +342,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
 
                 switch (resultCode) {
                     // If Google Play services resolved the problem
-                    case Activity.RESULT_OK:
+                    case FragmentActivity.RESULT_OK:
 
                         if (Application.APPDEBUG) {
                             // Log the result
@@ -734,21 +735,12 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
         super.onCreateOptionsMenu(menu);
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-
+        menu.findItem(R.id.action_user).setOnMenuItemClickListener(this);
+        menu.findItem(R.id.action_settings).setOnMenuItemClickListener(this);
+        menu.findItem(R.id.menu_item_add_task).setOnMenuItemClickListener(this);
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     /*
          * Show a dialog returned by Google Play services for the connection error code
@@ -771,6 +763,51 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
             // Show the error dialog in the DialogFragment
             errorFragment.show(getSupportFragmentManager(), Application.APPTAG);
         }
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
+            case (R.id.action_settings): {
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                return true;
+            }
+            case (R.id.action_user): {
+                startActivity(new Intent(MainActivity.this, UserProfileActivity.class));
+                return true;
+            }
+            case (R.id.menu_item_add_task): {
+
+                // Only allow posts if we have a location
+                Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
+
+                if (myLoc == null) {
+                    Toast.makeText(MainActivity.this,
+                            "Please try again after your location appears on the map.", Toast.LENGTH_LONG).show();
+                    return true;
+                }
+
+
+                MarkerOptions markerOpts =
+                        new MarkerOptions().position(new LatLng(myLoc.getLatitude(), myLoc.getLongitude()));
+
+                markerOpts =
+                        markerOpts.title("New issue, click to edit")
+                                .snippet("Drag to change location")
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))
+                                .draggable(true);
+
+                Marker marker = map.getMap().addMarker(markerOpts);
+
+                marker.showInfoWindow();
+
+                updateZoom(new LatLng(myLoc.getLatitude(), myLoc.getLongitude()));
+
+                return true;
+
+            }
+        }
+        return false;
     }
 
     /*
