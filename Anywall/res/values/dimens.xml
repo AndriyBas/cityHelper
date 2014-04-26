@@ -8,4 +8,7 @@
 
     <dimen name="sliding_menu_shadow_width">15dp</dimen>
 
+    <dimen name="icon_width">96dp</dimen>
+    <dimen name="icon_height">64dp</dimen>
+
 </resources>
