@@ -7,10 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
 import com.parse.anywall.R;
-import com.parse.anywall.model.AnywallPost;
 import com.parse.anywall.model.Tag;
 
 /**
@@ -57,8 +57,6 @@ public class SlidingMenuRightFragment extends Fragment {
     private ParseQueryAdapter<Tag> tagsAdapter;
 
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -71,21 +69,21 @@ public class SlidingMenuRightFragment extends Fragment {
                 statusList));
         listViewStatus.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
-        ListView listViewTags = (ListView) v.findViewById(R.id.listViewTags);
-        listViewTags.setAdapter(new ArrayAdapter<String>(
-                getActivity(),
-                android.R.layout.simple_list_item_multiple_choice,
-                tagsList));
-        listViewTags.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+//        ListView listViewTags = (ListView) v.findViewById(R.id.listViewTags);
+//        listViewTags.setAdapter(new ArrayAdapter<String>(
+//                getActivity(),
+//                android.R.layout.simple_list_item_multiple_choice,
+//                tagsList));
+//        listViewTags.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
 
-
+        initTags(v);
 
         return v;
 
     }
 
-    private void initTags()  {
+    private void initTags(View v) {
         // Set up a customized query
         ParseQueryAdapter.QueryFactory<Tag> factory =
                 new ParseQueryAdapter.QueryFactory<Tag>() {
@@ -102,12 +100,13 @@ public class SlidingMenuRightFragment extends Fragment {
         tagsAdapter = new ParseQueryAdapter<Tag>(getActivity(), factory) {
             @Override
             public View getItemView(Tag tag, View view, ViewGroup parent) {
-//                if (view == null) {
-//                    view = View.inflate(getContext(), R.layout.item_task_post, null);
-//                }
-//                TextView contentView = (TextView) view.findViewById(R.id.contentView);
+                if (view == null) {
+                    view = View.inflate(getContext(), android.R.layout.simple_list_item_multiple_choice, null);
+                }
+
+                TextView text1 = (TextView) view.findViewById(android.R.id.text1);
 //                TextView usernameView = (TextView) view.findViewById(R.id.usernameView);
-//                contentView.setText(post.getText());
+                text1.setText(tag.getName());
 //                usernameView.setText(post.getUser().getUsername());
                 return view;
             }
@@ -120,7 +119,10 @@ public class SlidingMenuRightFragment extends Fragment {
         tagsAdapter.setPaginationEnabled(false);
 
         // Attach the query adapter to the view
-//        ListView postsView = (ListView) this.findViewById(R.id.postsView);
-//        postsView.setAdapter(tagsAdapter);
+        ListView tagsView = (ListView) v.findViewById(R.id.listViewTags);
+        tagsView.setAdapter(tagsAdapter);
+        tagsView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+
+        tagsAdapter.loadObjects();
     }
 }
