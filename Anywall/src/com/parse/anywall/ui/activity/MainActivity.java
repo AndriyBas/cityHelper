@@ -36,6 +36,7 @@ import com.parse.anywall.Application;
 import com.parse.anywall.Const;
 import com.parse.anywall.R;
 import com.parse.anywall.model.Issue;
+import org.json.JSONArray;
 
 import java.util.*;
 
@@ -100,8 +101,8 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
     private Circle mapCircle;
 
     // Fields for the map radius in feet
-    private float radius;
-    private float lastRadius;
+    private static float radius;
+    public static float lastRadius;
 
     // Fields for helping process map and location changes
     private final Map<String, Marker> mapMarkers = new HashMap<String, Marker>();
@@ -109,8 +110,8 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
     private boolean hasSetUpInitialLocation = false;
     private String selectedObjectId;
     private int selectedObjectPosition;
-    private Location lastLocation = null;
-    private Location currentLocation = null;
+    public static Location lastLocation = null;
+    public static Location currentLocation = null;
 
     // A request to connect to Location Services
     private LocationRequest locationRequest;
@@ -119,9 +120,10 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
     private LocationClient locationClient;
 
     // Adapter for the Parse query
-    private ParseQueryAdapter<Issue> mIssueAdapter;
+    public static ParseQueryAdapter<Issue> mIssueAdapter;
 
     public static Issue CURRENT_ISSUE;
+    public static ListView postsView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -184,7 +186,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
         mIssueAdapter.setPaginationEnabled(false);
 
         // Attach the query adapter to the view
-        ListView postsView = (ListView) findViewById(R.id.postsView);
+        postsView = (ListView) findViewById(R.id.postsView);
         postsView.setAdapter(mIssueAdapter);
 
         // Set up the handler for an item's selection
@@ -301,6 +303,79 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
                 alert.create().show();*/
             }
         });
+    }
+
+    public static void requeryIssues(final List<String> statuses, final List<String> tags) {
+// Set up a customized query
+        ParseQueryAdapter.QueryFactory<Issue> factory =
+                new ParseQueryAdapter.QueryFactory<Issue>() {
+                    public ParseQuery<Issue> create() {
+                        Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
+                        ParseQuery<Issue> query = ParseQuery.getQuery(Issue.class);
+                        query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
+                        query.include("author");
+//                        query.include("photo");
+                        if (statuses != null) {
+                            query.whereContainedIn("status", statuses);
+                        }
+
+                        query.orderByDescending("createdAt");
+                        query.whereWithinKilometers("location", geoPointFromLocation(myLoc), radius
+                                * METERS_PER_FEET / METERS_PER_KILOMETER);
+                        query.setLimit(MAX_POST_SEARCH_RESULTS);
+
+                        if (tags != null) {
+                            List<String> ids = new ArrayList<String>();
+                            try {
+                                List<Issue> list = query.find();
+                                for (int i = 0; i < list.size(); i++) {
+                                    JSONArray arr = list.get(i).getTags();
+                                    for (int j = 0; j < arr.length(); j++) {
+                                        if (tags.contains(arr.getString(0))) {
+                                            ids.add(list.get(i).getObjectId());
+                                            break;
+                                        }
+                                    }
+                                }
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                            query.whereContainedIn("objectId", ids);
+                        }
+                        return query;
+                    }
+                };
+
+        // Set up the query adapter
+        mIssueAdapter = new ParseQueryAdapter<Issue>(Application.appContext, factory) {
+            @Override
+            public View getItemView(Issue issue, View view, ViewGroup parent) {
+                if (view == null) {
+                    view = View.inflate(getContext(), R.layout.item_task_post, null);
+                }
+//                TextView contentView = (TextView) view.findViewById(R.id.contentView);
+//                TextView usernameView = (TextView) view.findViewById(R.id.usernameView);
+//                contentView.setText(post.getText());
+//                usernameView.setText(post.getUser().getUsername());
+                return view;
+            }
+        };
+
+        // Disable automatic loading when the adapter is attached to a view.
+        mIssueAdapter.setAutoload(false);
+
+        // Disable pagination, we'll manage the query limit ourselves
+        mIssueAdapter.setPaginationEnabled(false);
+
+        // Attach the query adapter to the view
+        postsView.setAdapter(mIssueAdapter);
+
+        mIssueAdapter.loadObjects();
+
+
     }
 
     /*
@@ -659,7 +734,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
     /*
      * Helper method to get the Parse GEO point representation of a location
      */
-    private ParseGeoPoint geoPointFromLocation(Location loc) {
+    private static ParseGeoPoint geoPointFromLocation(Location loc) {
         return new ParseGeoPoint(loc.getLatitude(), loc.getLongitude());
     }
 

@@ -68,6 +68,13 @@ public class CityHelperBaseActivity extends SlidingFragmentActivity {
 
 //        getActionBar().setDisplayHomeAsUpEnabled(true);
 
+        getSlidingMenu().setOnClosedListener(new SlidingMenu.OnClosedListener() {
+            @Override
+            public void onClosed() {
+                SlidingMenuRightFragment.doOnMenuClosed();
+            }
+        });
+
     }
 
     @Override
