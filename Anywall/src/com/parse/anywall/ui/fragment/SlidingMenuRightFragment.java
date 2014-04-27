@@ -2,6 +2,7 @@ package com.parse.anywall.ui.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +12,13 @@ import android.widget.TextView;
 import com.parse.*;
 import com.parse.anywall.R;
 import com.parse.anywall.model.Tag;
+import com.parse.anywall.ui.activity.MainActivity;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * Created by bamboo on 26.04.14.
@@ -55,9 +59,12 @@ public class SlidingMenuRightFragment extends Fragment {
             "#наркоманія"
     };
 
+    public static ListView statusListView;
+
 
     // Adapter for the Parse query
     public static ParseQueryAdapter<Tag> tagsAdapter;
+    public static ListView tagsView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,12 +77,12 @@ public class SlidingMenuRightFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_right_menu, container, false);
 
-        ListView listViewStatus = (ListView) v.findViewById(R.id.listViewStatus);
-        listViewStatus.setAdapter(new ArrayAdapter<String>(
+        statusListView = (ListView) v.findViewById(R.id.listViewStatus);
+        statusListView.setAdapter(new ArrayAdapter<String>(
                 getActivity(),
                 android.R.layout.simple_list_item_multiple_choice,
                 statusList));
-        listViewStatus.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        statusListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
 //        ListView listViewTags = (ListView) v.findViewById(R.id.listViewTags);
 //        listViewTags.setAdapter(new ArrayAdapter<String>(
@@ -96,7 +103,6 @@ public class SlidingMenuRightFragment extends Fragment {
         ParseQueryAdapter.QueryFactory<Tag> factory =
                 new ParseQueryAdapter.QueryFactory<Tag>() {
                     public ParseQuery<Tag> create() {
-
                         ParseQuery<Tag> query = ParseQuery.getQuery(Tag.class);
                         query.orderByDescending("count");
                         query.setLimit(100);
@@ -127,7 +133,7 @@ public class SlidingMenuRightFragment extends Fragment {
         tagsAdapter.setPaginationEnabled(false);
 
         // Attach the query adapter to the view
-        ListView tagsView = (ListView) v.findViewById(R.id.listViewTags);
+        tagsView = (ListView) v.findViewById(R.id.listViewTags);
         tagsView.setAdapter(tagsAdapter);
         tagsView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
@@ -181,6 +187,20 @@ public class SlidingMenuRightFragment extends Fragment {
             }
         });
 
+
+    }
+
+    public static void doOnMenuClosed() {
+
+        List<String> statuses = new ArrayList<String>();
+        SparseBooleanArray checked = statusListView.getCheckedItemPositions();
+        for (int i = 0; i < statusListView.getCount(); i++) {
+            if (checked.get(i)) {
+                statuses.add(statusListView.getItemAtPosition(i).toString());
+            }
+        }
+
+        MainActivity.requeryIssues(statuses, null);
 
     }
 }
