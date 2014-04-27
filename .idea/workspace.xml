@@ -113,7 +113,7 @@
       <file leaf-file-name="fragment_issue.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Anywall/res/layout/fragment_issue.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="152" column="34" selection-start="6741" selection-end="6741" vertical-scroll-proportion="-3.66" vertical-offset="2401" max-vertical-offset="4420">
+            <state line="195" column="49" selection-start="8637" selection-end="8652" vertical-scroll-proportion="-4.46" vertical-offset="3092" max-vertical-offset="4420">
               <folding />
             </state>
           </provider>
@@ -155,6 +155,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Tag.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/Tag.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="0" selection-start="140" selection-end="140" vertical-scroll-proportion="0.19833334" vertical-offset="0" max-vertical-offset="629">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="main.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Anywall/res/menu/main.xml">
           <provider selected="true" editor-type-id="text-editor">
@@ -173,15 +182,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IssueFragment.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="IssueFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/fragment/IssueFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="179" column="21" selection-start="7207" selection-end="7207" vertical-scroll-proportion="0.45454547" vertical-offset="2788" max-vertical-offset="4233">
+            <state line="200" column="28" selection-start="8195" selection-end="8195" vertical-scroll-proportion="-13.730769" vertical-offset="3043" max-vertical-offset="4573">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6669#7225#0" expanded="true" />
-                <element signature="e#7280#7507#0" expanded="true" />
-                <element signature="e#7488#7489#0" expanded="true" />
+                <element signature="e#6847#7403#0" expanded="true" />
+                <element signature="e#7384#7385#0" expanded="true" />
+                <element signature="e#7458#7685#0" expanded="true" />
+                <element signature="e#7666#7667#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -737,9 +747,10 @@
         <state line="17" column="18" selection-start="489" selection-end="489" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1037">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6669#7225#0" expanded="true" />
-            <element signature="e#7280#7507#0" expanded="true" />
-            <element signature="e#7488#7489#0" expanded="true" />
+            <element signature="e#6847#7403#0" expanded="true" />
+            <element signature="e#7384#7385#0" expanded="true" />
+            <element signature="e#7458#7685#0" expanded="true" />
+            <element signature="e#7666#7667#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1024,13 +1035,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/Tag.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="140" selection-end="140" vertical-scroll-proportion="0.19833334" vertical-offset="0" max-vertical-offset="629">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/Issue.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="59" column="5" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.0" vertical-offset="918" max-vertical-offset="1139">
@@ -1044,26 +1048,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="335" column="13" selection-start="11415" selection-end="11415" vertical-scroll-proportion="0.33333334" vertical-offset="5002" max-vertical-offset="8364">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/Comment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="50" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="714">
-          <folding>
-            <element signature="e#286#287#0" expanded="true" />
-            <element signature="e#313#314#0" expanded="true" />
-            <element signature="e#353#354#0" expanded="true" />
-            <element signature="e#385#386#0" expanded="true" />
-            <element signature="e#420#421#0" expanded="true" />
-            <element signature="e#451#452#0" expanded="true" />
-            <element signature="e#499#500#0" expanded="true" />
-            <element signature="e#539#540#0" expanded="true" />
-            <element signature="e#573#574#0" expanded="true" />
-            <element signature="e#603#604#0" expanded="true" />
-            <element signature="e#649#650#0" expanded="true" />
-            <element signature="e#687#688#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1129,20 +1113,48 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="152" column="34" selection-start="6741" selection-end="6741" vertical-scroll-proportion="-3.66" vertical-offset="2401" max-vertical-offset="4420">
+        <state line="195" column="49" selection-start="8637" selection-end="8652" vertical-scroll-proportion="-4.46" vertical-offset="3092" max-vertical-offset="4420">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/fragment/IssueFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="179" column="21" selection-start="7207" selection-end="7207" vertical-scroll-proportion="0.45454547" vertical-offset="2788" max-vertical-offset="4233">
+        <state line="200" column="28" selection-start="8195" selection-end="8195" vertical-scroll-proportion="-13.730769" vertical-offset="3043" max-vertical-offset="4573">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6669#7225#0" expanded="true" />
-            <element signature="e#7280#7507#0" expanded="true" />
-            <element signature="e#7488#7489#0" expanded="true" />
+            <element signature="e#6847#7403#0" expanded="true" />
+            <element signature="e#7384#7385#0" expanded="true" />
+            <element signature="e#7458#7685#0" expanded="true" />
+            <element signature="e#7666#7667#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/Comment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="50" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="714">
+          <folding>
+            <element signature="e#286#287#0" expanded="true" />
+            <element signature="e#313#314#0" expanded="true" />
+            <element signature="e#353#354#0" expanded="true" />
+            <element signature="e#385#386#0" expanded="true" />
+            <element signature="e#420#421#0" expanded="true" />
+            <element signature="e#451#452#0" expanded="true" />
+            <element signature="e#499#500#0" expanded="true" />
+            <element signature="e#539#540#0" expanded="true" />
+            <element signature="e#573#574#0" expanded="true" />
+            <element signature="e#603#604#0" expanded="true" />
+            <element signature="e#649#650#0" expanded="true" />
+            <element signature="e#687#688#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/Tag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="140" selection-end="140" vertical-scroll-proportion="0.19833334" vertical-offset="0" max-vertical-offset="629">
+          <folding />
         </state>
       </provider>
     </entry>

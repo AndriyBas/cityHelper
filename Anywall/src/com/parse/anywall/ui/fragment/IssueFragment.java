@@ -25,6 +25,7 @@ import java.util.ArrayList;
 public class IssueFragment extends Fragment implements View.OnClickListener {
 
     private boolean hide = false;
+    private boolean willGo = false;
     private ListView commentLv;
     private TextView detLabel;
     private EditText commentInput;
@@ -109,6 +110,7 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
         tagsContainer = (LinearLayout) v.findViewById(R.id.tagsContainer);
 
         mTextViewDonation = (TextView) v.findViewById(R.id.issue_donation_text);
+        mTextViewParticipants = (TextView) v.findViewById(R.id.issue_participants_text);
 
     }
 
@@ -118,6 +120,7 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
         imageButtonTakePhoto.setOnClickListener(this);
         mButtonAddTag.setOnClickListener(this);
         mButtonDonate.setOnClickListener(this);
+        mButtonIWillBeThere.setOnClickListener(this);
     }
 
     @Override
@@ -146,7 +149,6 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
             }
-
             case (R.id.issue_imageButton): {
                 ImageProcessor.showImagePickerDialog(fragment, false);
                 break;
@@ -187,6 +189,24 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
                 });
 
                 builder.show();
+                break;
+            }
+            case (R.id.i_will_be_there_button): {
+                if (willGo) {
+                    int prevCount = Integer.parseInt(mTextViewParticipants.getText().toString());
+                    if (prevCount != 0) {
+                        mTextViewParticipants.setText("" + (prevCount - 1));
+                        willGo = false;
+                        mButtonIWillBeThere.setText("I WILL BE THERE");
+                    } else {
+                        Logger.e("prev count = 0");
+                    }
+                } else {
+                    int prevCount = Integer.parseInt(mTextViewParticipants.getText().toString());
+                    mTextViewParticipants.setText("" + (prevCount + 1));
+                    willGo = true;
+                    mButtonIWillBeThere.setText("CANCEL");
+                }
                 break;
             }
         }
