@@ -1,133 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<ScrollView-->
-<!--xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--android:layout_width="match_parent"-->
-<!--android:layout_height="match_parent">-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <!-- added to catch focus on start -->
+    <RelativeLayout
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+    </RelativeLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp">
+
+            <ImageView android:layout_width="100dp"
+                       android:layout_height="100dp"
+                       android:id="@+id/issue_imageView"
+                       android:scaleType="centerInside"
+                       android:background="@android:color/darker_gray"
+                       android:cropToPadding="true"/>
+
+            <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/ic_menu_camera"
+                    android:id="@+id/issue_imageButton"/>
+        </LinearLayout>
 
 
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-    <!--<TextView android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:id="@+id/issue_label"-->
-    <!--android:text="ISSUE"-->
-    <!--style="?android:listSeparatorTextViewStyle"-->
-    <!--android:layout_marginTop="5dp"/>-->
-    <!--<LinearLayout-->
-    <!--android:orientation="horizontal"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginLeft="20dp"-->
-    <!--android:layout_marginTop="20dp">-->
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
 
-    <!--<LinearLayout-->
-    <!--android:orientation="vertical"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginRight="20dp">-->
+            <TextView
+                    android:id="@+id/issue_author"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Author : Serhii Ololo"
+                    android:layout_marginRight="10dp"
+                    style="?android:listSeparatorTextViewStyle"/>
 
-    <!--<ImageView android:layout_width="140dp"-->
-    <!--android:layout_height="140dp"-->
-    <!--android:id="@+id/issue_imageView"-->
-    <!--android:scaleType="centerInside"-->
-    <!--android:background="@android:color/darker_gray"-->
-    <!--android:cropToPadding="true"/>-->
-
-    <!--<ImageButton-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:src="@android:drawable/ic_menu_camera"-->
-    <!--android:id="@+id/issue_imageButton"/>-->
-    <!--</LinearLayout>-->
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:text="TITLE"
+                      android:layout_marginRight="10dp"
+                      style="?android:listSeparatorTextViewStyle"/>
 
 
-    <!--<LinearLayout-->
-    <!--android:orientation="vertical"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_weight="1">-->
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/issue_title_editText"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:hint="Enter a title for the issue"/>
 
-    <!--<TextView android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="Author : Serhii Ololo"-->
-    <!--android:layout_marginRight="10dp"-->
-    <!--style="?android:listSeparatorTextViewStyle"/>-->
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginRight="10dp">
 
-    <!--<TextView android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="TITLE"-->
-    <!--android:layout_marginRight="10dp"-->
-    <!--style="?android:listSeparatorTextViewStyle"/>-->
-
-
-    <!--<EditText-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:id="@+id/issue_title_editText"-->
-    <!--android:layout_gravity="center_horizontal"-->
-    <!--android:layout_marginTop="10dp"-->
-    <!--android:layout_marginRight="10dp"-->
-    <!--android:hint="Enter a title for the issue"/>-->
-    <!--<LinearLayout android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:orientation="horizontal"-->
-    <!--android:layout_marginRight="90dp">-->
-
-    <!--<EditText android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:hint="Add TAG"-->
-    <!--android:layout_weight="2"-->
-    <!--android:id="@+id/tag_editText"/>-->
-    <!--<Button android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="ADD"/>-->
-
-    <!--</LinearLayout>-->
-
+                <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Add TAG"
+                        android:layout_weight="2"
+                        android:id="@+id/issue_editText_tag"/>
+                <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ADD"
+                        android:id="@+id/issue_btn_add_tag"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 
     <!--<Spinner android:layout_width="match_parent"-->
     <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginRight="90dp"-->
+    <!--android:layout_marginRight="10dp"-->
+    <!--android:layout_marginLeft="10dp"-->
     <!--android:layout_marginTop="10dp"/>-->
+    <LinearLayout android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:layout_marginTop="10dp"
+                  android:layout_marginLeft="5dp"
+                  android:id="@+id/tagsContainer">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="#tag1"
+                  android:textSize="20dp"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="#tagwsd2"
+                  android:textSize="20dp"
+                  android:layout_marginLeft="5dp"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:layout_marginTop="10dp">
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="1"
+                      android:orientation="vertical">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Participants: "
+                      android:textStyle="bold"
+                      android:textSize="20dp"
+                      android:layout_marginLeft="10dp"/>
 
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:textSize="20dp"
+                      android:text="0"
+                      android:layout_marginLeft="10dp"
+                      android:id="@+id/issue_participants_text"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="1"
+                      android:orientation="vertical">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Donation: "
+                      android:textStyle="bold"
+                      android:textSize="20dp"
+                      android:layout_marginLeft="10dp"/>
 
-    <!--</LinearLayout>-->
-    <!--</LinearLayout>-->
-
-    <!--<LinearLayout android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:orientation="horizontal"-->
-    <!--android:layout_marginTop="40dp">-->
-
-    <!--<TextView android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="Participants: "-->
-    <!--android:textStyle="bold"-->
-    <!--android:textSize="20dp"-->
-    <!--android:layout_marginLeft="90dp"/>-->
-
-    <!--<TextView android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:textSize="20dp"-->
-    <!--android:text="0"-->
-    <!--android:id="@+id/participants_text"/>-->
-
-    <!--<TextView android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="Donation: "-->
-    <!--android:textStyle="bold"-->
-    <!--android:textSize="20dp"-->
-    <!--android:layout_marginLeft="120dp"/>-->
-
-    <!--<TextView android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:textSize="20dp"-->
-    <!--android:text="0"-->
-    <!--android:id="@+id/donation_text"/>-->
-    <!--</LinearLayout>-->
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:textSize="20dp"
+                      android:text="0"
+                      android:layout_marginLeft="10dp"
+                      android:id="@+id/issue_donation_text"/>
+        </LinearLayout>
+    </LinearLayout>
 
 
     <TextView android:layout_width="match_parent"
@@ -135,47 +160,43 @@
               android:id="@+id/details_label"
               android:text="DETAILS"
               style="?android:listSeparatorTextViewStyle"
-              android:layout_marginTop="20dp"/>
+              android:layout_marginTop="5dp"/>
 
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:orientation="vertical">
-
-
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/isuue_details_textView"
+                android:id="@+id/issue_details_textView"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:hint="Add description"/>
 
+        <LinearLayout android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+            <Button android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="Add event date"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/issue_btn_date"/>
+            <Button android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="DONATE"
+                    android:id="@+id/issue_btn_donate"/>
 
-        <Button android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:layout_marginTop="10dp"
-                android:text="Add event date"
-                android:id="@+id/issue_date"/>
-
-
-        <Button android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:text="DONATE"
-                android:id="@+id/issue_donate_button"/>
-
-        <Button android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:text="I WILL BE THERE"
-                android:id="@+id/i_will_be_there_button"/>
-
+            <Button android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="I WILL BE THERE"
+                    android:layout_marginRight="5dp"
+                    android:id="@+id/i_will_be_there_button"/>
+        </LinearLayout>
     </LinearLayout>
 
     <TextView android:layout_width="match_parent"
@@ -232,4 +253,3 @@
                 android:layout_above="@id/bottomLin"/>
     </RelativeLayout>
 </LinearLayout>
-        <!--</ScrollView>-->

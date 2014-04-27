@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.text.method.PasswordTransformationMethod;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,6 +39,8 @@ public class UserProfileActivity extends Activity implements View.OnClickListene
         activity = this;
         initPrefs();
         setupPrefs();
+
+        getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void initPrefs() {
@@ -62,7 +65,7 @@ public class UserProfileActivity extends Activity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.prefSetAvatar: {
-                showImagePickerDialog(activity, false);
+                ImageProcessor.showImagePickerDialog(activity, false);
                 break;
             }
             case R.id.prefName: {
@@ -143,34 +146,7 @@ public class UserProfileActivity extends Activity implements View.OnClickListene
         }
     }
  
-    private void showImagePickerDialog(final Activity act, final boolean isClose) {
-        AlertDialog.Builder myAlertDialog = new AlertDialog.Builder(act);
-        myAlertDialog.setTitle(act.getString(R.string.dialog_picture_title));
-        myAlertDialog.setMessage(act.getString(R.string.dialog_picture_message));
 
-        myAlertDialog.setPositiveButton(act.getString(R.string.dialog_picture_gallery),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        ImageProcessor.openGallery(act);
-                    }
-                });
-        myAlertDialog.setNegativeButton(act.getString(R.string.dialog_picture_camera),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        ImageProcessor.openCamera(act);
-                    }
-                });
-        myAlertDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                Logger.d("myAlertDialog onCancel");
-                if (isClose) {
-                    act.finish();
-                }
-            }
-        });
-        myAlertDialog.show();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -182,6 +158,11 @@ public class UserProfileActivity extends Activity implements View.OnClickListene
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+
             case R.id.menu_tags_choose_save:
                 saveClicked();
                 return true;
@@ -218,7 +199,7 @@ public class UserProfileActivity extends Activity implements View.OnClickListene
                     Logger.e(getClass().getSimpleName() + ":  Error while FROM_GALLERY");
                 }
             }
-            
+
         }
     }
 }

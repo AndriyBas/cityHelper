@@ -66,7 +66,6 @@ public class CityHelperBaseActivity extends SlidingFragmentActivity {
                     this.getSupportFragmentManager().findFragmentById(R.id.sliding_menu_right);
         }
 
-
 //        getActionBar().setDisplayHomeAsUpEnabled(true);
 
     }

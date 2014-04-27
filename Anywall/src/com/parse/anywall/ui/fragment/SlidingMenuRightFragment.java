@@ -56,6 +56,11 @@ public class SlidingMenuRightFragment extends Fragment {
     // Adapter for the Parse query
     private ParseQueryAdapter<Tag> tagsAdapter;
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
