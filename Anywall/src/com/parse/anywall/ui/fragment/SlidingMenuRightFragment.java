@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.parse.*;
+import com.parse.anywall.Logger;
 import com.parse.anywall.R;
 import com.parse.anywall.model.Tag;
 import com.parse.anywall.ui.activity.MainActivity;
@@ -200,7 +201,17 @@ public class SlidingMenuRightFragment extends Fragment {
             }
         }
 
-        MainActivity.requeryIssues(statuses, null);
+        List<String> tags = new ArrayList<String>();
+        SparseBooleanArray checkedTags = tagsView.getCheckedItemPositions();
+        for (int i = 0; i < tagsView.getCount(); i++) {
+            if (checkedTags.get(i)) {
+                tags.add(((Tag) tagsView.getItemAtPosition(i)).getName());
+                Logger.e(((Tag) tagsView.getItemAtPosition(i)).getName());
+            }
+        }
+
+
+        MainActivity.requeryIssues(statuses, tags);
 
     }
 }

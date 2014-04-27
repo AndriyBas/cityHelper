@@ -312,7 +312,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
                     public ParseQuery<Issue> create() {
                         Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
                         ParseQuery<Issue> query = ParseQuery.getQuery(Issue.class);
-                        query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
+//                        query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
                         query.include("author");
 //                        query.include("photo");
                         if (statuses != null) {
@@ -331,7 +331,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
                                 for (int i = 0; i < list.size(); i++) {
                                     JSONArray arr = list.get(i).getTags();
                                     for (int j = 0; j < arr.length(); j++) {
-                                        if (tags.contains(arr.getString(0))) {
+                                        if (tags.contains(arr.getString(j))) {
                                             ids.add(list.get(i).getObjectId());
                                             break;
                                         }
@@ -345,6 +345,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
 
                             query.whereContainedIn("objectId", ids);
                         }
+
                         return query;
                     }
                 };
