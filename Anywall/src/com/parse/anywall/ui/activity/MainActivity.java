@@ -1,6 +1,5 @@
 package com.parse.anywall.ui.activity;
 
-import android.support.v4.app.FragmentActivity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -10,6 +9,7 @@ import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
 import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
@@ -119,6 +119,8 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
     private ParseQueryAdapter<AnywallPost> posts;
 
 
+    private Marker activeMarker;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -178,14 +180,24 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
         posts.setPaginationEnabled(false);
 
         // Attach the query adapter to the view
-        ListView postsView = (ListView) findViewById(R.id.postsView) ;
+        ListView postsView = (ListView) findViewById(R.id.postsView);
         postsView.setAdapter(posts);
 
         // Set up the handler for an item's selection
         postsView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final AnywallPost item = posts.getItem(position);
-                selectedObjectId = item.getObjectId();
+
+                String currentObjectId = item.getObjectId();
+
+                if (currentObjectId == selectedObjectId) {
+
+                    Intent i = new Intent(MainActivity.this, IssueActivity.class);
+                    startActivity(i);
+                    return;
+                }
+
+                selectedObjectId = currentObjectId;
                 map.getMap().animateCamera(
                         CameraUpdateFactory.newLatLng(new LatLng(item.getLocation().getLatitude(), item
                                 .getLocation().getLongitude())), new CancelableCallback() {
@@ -204,6 +216,8 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
                 if (marker != null) {
                     marker.showInfoWindow();
                 }
+
+
             }
         });
 
