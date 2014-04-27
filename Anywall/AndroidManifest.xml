@@ -92,6 +92,7 @@
                 android:label="Issue"
                 android:parentActivityName=".ui.activity.MainActivity"
                 android:screenOrientation="portrait"
+                android:windowSoftInputMode="adjustPan"
                 >
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data

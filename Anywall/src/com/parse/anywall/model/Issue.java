@@ -82,4 +82,12 @@ public class Issue extends ParseObject implements Serializable {
     public void setLocation(ParseGeoPoint value) {
         put("location", value);
     }
+
+    public String getStatus() {
+        return getString("status");
+    }
+
+    public void setStatus(String status) {
+        put("status", status);
+    }
 }

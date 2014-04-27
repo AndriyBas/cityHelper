@@ -8,10 +8,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.parse.ParseQuery;
-import com.parse.ParseQueryAdapter;
+import com.parse.*;
 import com.parse.anywall.R;
 import com.parse.anywall.model.Tag;
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.util.HashSet;
 
 /**
  * Created by bamboo on 26.04.14.
@@ -19,8 +22,8 @@ import com.parse.anywall.model.Tag;
 public class SlidingMenuRightFragment extends Fragment {
 
     public final String[] statusList = new String[]{
-            "Розглядається",
             "Активна",
+            "Розглядається",
             "Завершена",
             "Відхилена"
     };
@@ -54,7 +57,7 @@ public class SlidingMenuRightFragment extends Fragment {
 
 
     // Adapter for the Parse query
-    private ParseQueryAdapter<Tag> tagsAdapter;
+    public static ParseQueryAdapter<Tag> tagsAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -129,5 +132,55 @@ public class SlidingMenuRightFragment extends Fragment {
         tagsView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
         tagsAdapter.loadObjects();
+    }
+
+    public static void reloadTags() {
+        tagsAdapter.loadObjects();
+    }
+
+    public static void updateTags(JSONArray newTags) {
+
+        HashSet<String> set = new HashSet<String>();
+
+        try {
+            for (int i = 0; i < newTags.length(); i++) {
+                set.add(newTags.getString(i));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        for (int i = 0; i < tagsAdapter.getCount(); i++) {
+            Tag t = tagsAdapter.getItem(i);
+            if (set.contains(t.getName())) {
+                t.incCount();
+                set.remove(t.getName());
+                t.saveInBackground();
+            }
+        }
+
+        for (String s : set) {
+            Tag t = new Tag();
+            t.setName(s);
+            t.setCount(0);
+            t.saveInBackground();
+        }
+
+        final Tag t = new Tag();
+        t.setName("helper");
+        t.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                t.deleteInBackground(new DeleteCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        SlidingMenuRightFragment.reloadTags();
+                    }
+                });
+            }
+        });
+
+
     }
 }

@@ -1,8 +1,6 @@
 package com.parse.anywall.ui.activity;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.graphics.Color;
@@ -10,15 +8,17 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
-import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -33,8 +33,8 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.*;
 import com.parse.*;
 import com.parse.anywall.Application;
+import com.parse.anywall.Const;
 import com.parse.anywall.R;
-import com.parse.anywall.model.AnywallPost;
 import com.parse.anywall.model.Issue;
 
 import java.util.*;
@@ -121,9 +121,6 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
     // Adapter for the Parse query
     private ParseQueryAdapter<Issue> mIssueAdapter;
 
-
-    private Marker activeMarker;
-
     public static Issue CURRENT_ISSUE;
 
     @Override
@@ -154,7 +151,9 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
                     public ParseQuery<Issue> create() {
                         Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
                         ParseQuery<Issue> query = ParseQuery.getQuery(Issue.class);
-                        query.include("user");
+                        query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
+                        query.include("author");
+//                        query.include("photo");
                         query.orderByDescending("createdAt");
                         query.whereWithinKilometers("location", geoPointFromLocation(myLoc), radius
                                 * METERS_PER_FEET / METERS_PER_KILOMETER);
@@ -190,12 +189,17 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
 
         // Set up the handler for an item's selection
         postsView.setOnItemClickListener(new OnItemClickListener() {
+
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final Issue item = mIssueAdapter.getItem(position);
+
+                Const.isNewIssue = false;
 
                 String currentObjectId = item.getObjectId();
 
                 if (currentObjectId == selectedObjectId) {
+
+                    selectedObjectPosition = position;
 
                     CURRENT_ISSUE = item;
 
@@ -251,7 +255,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
         Button postButton = (Button) findViewById(R.id.postButton);
         postButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                // Only allow mIssueAdapter if we have a location
+               /* // Only allow mIssueAdapter if we have a location
                 Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
                 if (myLoc == null) {
                     Toast.makeText(MainActivity.this,
@@ -294,7 +298,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
                         // Do nothing.
                     }
                 });
-                alert.create().show();
+                alert.create().show();*/
             }
         });
     }
@@ -835,6 +839,9 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
 
                 updateZoom(new LatLng(myLoc.getLatitude(), myLoc.getLongitude()));
 
+                selectedObjectPosition = -1;
+                Const.isNewIssue = true;
+
                 return true;
 
             }
@@ -850,18 +857,28 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
         final ParseGeoPoint myPoint = new ParseGeoPoint(marker.getPosition().latitude,
                 marker.getPosition().longitude);
 
-        Issue issue = new Issue();
-        issue.setLocation(myPoint);
+        if (selectedObjectPosition == -1) {
+            CURRENT_ISSUE = new Issue();
+            CURRENT_ISSUE.setLocation(myPoint);
+            ParseACL acl = new ParseACL();
+            // Give public read access
+            acl.setPublicReadAccess(true);
+            acl.setWriteAccess(ParseUser.getCurrentUser(), true);
+            CURRENT_ISSUE.setACL(acl);
 
-        CURRENT_ISSUE = issue;
+            CURRENT_ISSUE.setAuthor(ParseUser.getCurrentUser());
+            CURRENT_ISSUE.setDonation(0);
+            CURRENT_ISSUE.setParticipants(0);
+            marker.remove();
+            Const.isNewIssue = false;
+
+        }
 
 //        mIssueAdapter.getI
 
         startActivity(i);
 
-        if (CURRENT_ISSUE.getAuthor() == null) {
-            marker.remove();
-        }
+
     }
 
     /*

@@ -45,15 +45,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
-
-            <TextView
-                    android:id="@+id/issue_author"
-                    android:layout_width="match_parent"
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Author : Serhii Ololo"
-                    android:layout_marginRight="10dp"
-                    style="?android:listSeparatorTextViewStyle"/>
-
+                    android:layout_weight="1">
+                <TextView
+                        android:id="@+id/issue_author"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="2"
+                        android:text="Author : Serhii Ololo"
+                        android:layout_marginRight="10dp"
+                        style="?android:listSeparatorTextViewStyle"/>
+                <TextView
+                        android:id="@+id/issue_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:text="Status:"
+                        android:layout_marginRight="10dp"
+                        style="?android:listSeparatorTextViewStyle"/>
+                <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/statuSpinner"/>
+            </LinearLayout>
             <TextView android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:text="TITLE"
@@ -91,11 +108,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!--<Spinner android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginRight="10dp"-->
-    <!--android:layout_marginLeft="10dp"-->
-    <!--android:layout_marginTop="10dp"/>-->
+
     <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
