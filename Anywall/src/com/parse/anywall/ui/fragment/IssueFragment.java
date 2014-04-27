@@ -167,7 +167,6 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
                 }
                 TextView tt = (TextView) view.findViewById(R.id.tvCommTxt);
                 TextView tt1 = (TextView) view.findViewById(R.id.tvCommAuthor);
-                ImageView avatar = (ImageView) view.findViewById(R.id.comment_avatar);
 
                 tt.setText(c.getText());
                 tt1.setText(c.getAuthor().getUsername());
