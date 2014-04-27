@@ -11,13 +11,17 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.*;
 import android.widget.*;
+import com.parse.ParseACL;
+import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 import com.parse.anywall.Const;
 import com.parse.anywall.Logger;
 import com.parse.anywall.R;
 import com.parse.anywall.model.Comment;
 import com.parse.anywall.model.ImageProcessor;
 import com.parse.anywall.model.Issue;
+import com.parse.anywall.ui.activity.MainActivity;
 import com.parse.anywall.ui.adapters.CommentAdapter;
 
 import java.util.ArrayList;
@@ -63,6 +67,8 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
         setHasOptionsMenu(true);
+
+        mIssue = MainActivity.CURRENT_ISSUE;
     }
 
     @Override
@@ -229,9 +235,34 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
     }
 
     private void collectDataAndSaveIssue() {
-        if (mIssue == null) {
-            mIssue = new Issue();
+        if (mIssue.getAuthor() == null) {
+            ParseACL acl = new ParseACL();
+            // Give public read access
+            acl.setPublicReadAccess(true);
+            acl.setWriteAccess(ParseUser.getCurrentUser(), true);
+            mIssue.setACL(acl);
+
+            mIssue.setAuthor(ParseUser.getCurrentUser());
+            mIssue.setDonation(0);
+            mIssue.setParticipants(0);
         }
+
+        mIssue.setTitle(editTextTitle.getText().toString());
+        mIssue.setParticipants(Integer.parseInt(mTextViewParticipants.getText().toString()));
+
+        mIssue.setDonation(Integer.parseInt(mTextViewDonation.getText().toString()));
+        mIssue.setDetail(mEditTextDetails.getText().toString());
+
+        mIssue.saveEventually(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+                    Toast.makeText(getActivity(), "Saved OK", Toast.LENGTH_SHORT)
+                            .show();
+                }
+            }
+        });
+
     }
 
     @Override

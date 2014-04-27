@@ -13,11 +13,13 @@ public class IssueActivity extends FragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
         Fragment fragment = fm.findFragmentById(getLayoutResId());
 
         if (fragment == null) {
             fragment = new IssueFragment();
+
             fm.beginTransaction()
                     .replace(getLayoutResId(), fragment)
                     .commit();

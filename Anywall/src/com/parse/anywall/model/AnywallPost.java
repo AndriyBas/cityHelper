@@ -2,11 +2,13 @@ package com.parse.anywall.model;
 
 import com.parse.*;
 
+import java.io.Serializable;
+
 /**
  * Data model for a post.
  */
 @ParseClassName("Posts")
-public class AnywallPost extends ParseObject {
+public class AnywallPost extends ParseObject implements Serializable {
 
     public String getText() {
         return getString("text");
