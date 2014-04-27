@@ -7,8 +7,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.InputType;
 import android.view.*;
 import android.widget.*;
 import com.parse.*;
@@ -19,6 +21,11 @@ import com.parse.anywall.model.Comment;
 import com.parse.anywall.model.ImageProcessor;
 import com.parse.anywall.model.Issue;
 import com.parse.anywall.ui.activity.MainActivity;
+import com.squareup.picasso.Picasso;
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.ByteArrayOutputStream;
 
 
 public class IssueFragment extends Fragment implements View.OnClickListener {
@@ -55,8 +62,13 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
     private Button mButtonIWillBeThere;
 
     private LinearLayout tagsContainer;
+    private Bitmap issuePhoto;
+
+    private String[] statuses = {Const.STATUS_ACTIVE, Const.STATUS_CONSIDERING, Const.STATUS_FINISHED, Const.STATUS_REJECTED};
 
     ParseQueryAdapter<Comment> mCommentAdapter;
+
+    private Spinner statusSpinner;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,6 +92,71 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
         mEditTextDetails.setText(mIssue.getDetail());
 
 
+        statusSpinner.setSelection(3);
+        String status = mIssue.getStatus();
+        if (status != null) {
+            for (int i = 0; i < statuses.length; i++) {
+                if (status.equals(statuses[i])) {
+                    statusSpinner.setSelection(i);
+                    break;
+                }
+            }
+        }
+
+
+        tagsContainer.removeAllViews();
+
+        try {
+            JSONArray tags = mIssue.getTags();
+            for (int i = 0; i < tags.length(); i++) {
+//            tags.get(i).toString()
+                TextView txt = new TextView(activity);
+
+                txt.setText(tags.get(i).toString());
+
+                txt.setTextSize(20);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                params.leftMargin = 5;
+                tagsContainer.addView(txt, params);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+//        try {
+
+
+        ParseFile f = mIssue.getPhoto();
+
+        if (f != null) {
+            Logger.e(f.getUrl());
+            Picasso.with(activity)
+                    .load(Uri.parse(f.getUrl()))
+                    .resize(300, 300)
+                    .centerCrop()
+                    .placeholder(R.drawable.ic_launcher)
+                    .into(imageViewPhoto);
+        }
+            /*if (f != null) {
+
+                byte[] data = f.getData();
+
+                f.getUrl()
+
+                Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+
+                imageViewPhoto.setImageBitmap(bitmap);
+            }else {
+                Logger.e("file == null");
+            }*/
+
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+
+
     }
 
     @Override
@@ -89,48 +166,19 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
         init(v);
         setupViews();
 
-        if (mIssue.getAuthor() != null) {
-            populateFragment();
-        }
 
         return v;
     }
 
-    private void init(View v) {
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        activity = getActivity();
-        fragment = this;
-        imageViewPhoto = (ImageView) v.findViewById(R.id.issue_imageView);
-
-        imageButtonTakePhoto = (ImageButton) v.findViewById(R.id.issue_imageButton);
-        textViewAuthor = (TextView) v.findViewById(R.id.issue_author);
-        editTextTitle = (EditText) v.findViewById(R.id.issue_title_editText);
-
-        editTextTag = (EditText) v.findViewById(R.id.issue_editText_tag);
-        mButtonAddTag = (Button) v.findViewById(R.id.issue_btn_add_tag);
-
-        mTextViewParticipants = (TextView) v.findViewById(R.id.issue_participants_text);
-        mTextViewDonation = (TextView) v.findViewById(R.id.issue_donation_text);
-
-        mEditTextDetails = (EditText) v.findViewById(R.id.issue_details_textView);
-
-        mButtonDate = (Button) v.findViewById(R.id.issue_btn_date);
-        mButtonDonate = (Button) v.findViewById(R.id.issue_btn_donate);
-        mButtonIWillBeThere = (Button) v.findViewById(R.id.i_will_be_there_button);
-
-        mButtonAddTag = (Button) v.findViewById(R.id.issue_btn_add_tag);
-
-        detLabel = (TextView) v.findViewById(R.id.details_label);
-        commentLv = (ListView) v.findViewById(R.id.lvComments);
-
-        addComment = (Button) v.findViewById(R.id.addCommentButton);
-        commentInput = (EditText) v.findViewById(R.id.commentInput);
-
-        tagsContainer = (LinearLayout) v.findViewById(R.id.tagsContainer);
-
-        mTextViewDonation = (TextView) v.findViewById(R.id.issue_donation_text);
-        mTextViewParticipants = (TextView) v.findViewById(R.id.issue_participants_text);
-
+        try {
+            populateFragment();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void setupViews() {
@@ -184,6 +232,49 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
         commentLv.setAdapter(mCommentAdapter);
 
         mCommentAdapter.loadObjects();
+
+
+        ArrayAdapter spinnerArrayAdapter = new ArrayAdapter(activity,
+                android.R.layout.simple_spinner_dropdown_item,
+                statuses);
+        statusSpinner.setAdapter(spinnerArrayAdapter);
+        statusSpinner.setSelection(3);
+    }
+
+    private void init(View v) {
+        activity = getActivity();
+        fragment = this;
+        imageViewPhoto = (ImageView) v.findViewById(R.id.issue_imageView);
+        imageButtonTakePhoto = (ImageButton) v.findViewById(R.id.issue_imageButton);
+        textViewAuthor = (TextView) v.findViewById(R.id.issue_author);
+        editTextTitle = (EditText) v.findViewById(R.id.issue_title_editText);
+
+        editTextTag = (EditText) v.findViewById(R.id.issue_editText_tag);
+        mButtonAddTag = (Button) v.findViewById(R.id.issue_btn_add_tag);
+
+        mTextViewParticipants = (TextView) v.findViewById(R.id.issue_participants_text);
+        mTextViewDonation = (TextView) v.findViewById(R.id.issue_donation_text);
+
+        mEditTextDetails = (EditText) v.findViewById(R.id.issue_details_textView);
+
+        mButtonDate = (Button) v.findViewById(R.id.issue_btn_date);
+        mButtonDonate = (Button) v.findViewById(R.id.issue_btn_donate);
+        mButtonIWillBeThere = (Button) v.findViewById(R.id.i_will_be_there_button);
+
+        mButtonAddTag = (Button) v.findViewById(R.id.issue_btn_add_tag);
+
+        detLabel = (TextView) v.findViewById(R.id.details_label);
+        commentLv = (ListView) v.findViewById(R.id.lvComments);
+
+        addComment = (Button) v.findViewById(R.id.addCommentButton);
+        commentInput = (EditText) v.findViewById(R.id.commentInput);
+
+        tagsContainer = (LinearLayout) v.findViewById(R.id.tagsContainer);
+
+        mTextViewDonation = (TextView) v.findViewById(R.id.issue_donation_text);
+        mTextViewParticipants = (TextView) v.findViewById(R.id.issue_participants_text);
+
+        statusSpinner = (Spinner) v.findViewById(R.id.statuSpinner);
     }
 
 
@@ -260,6 +351,8 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
                 builder.setTitle("Enter sum you want to donate:");
 
                 final EditText input = new EditText(activity);
+                input.setInputType(InputType.TYPE_CLASS_NUMBER);
+//                input.setWidth(500);
                 builder.setView(input);
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
@@ -323,7 +416,7 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
     }
 
     private void collectDataAndSaveIssue() {
-        if (mIssue.getAuthor() == null) {
+       /* if (mIssue.getAuthor() == null) {
             ParseACL acl = new ParseACL();
             // Give public read access
             acl.setPublicReadAccess(true);
@@ -333,7 +426,9 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
             mIssue.setAuthor(ParseUser.getCurrentUser());
             mIssue.setDonation(0);
             mIssue.setParticipants(0);
-        }
+        }*/
+
+        Logger.d(mIssue.getObjectId());
 
         mIssue.setTitle(editTextTitle.getText().toString());
         mIssue.setParticipants(Integer.parseInt(mTextViewParticipants.getText().toString()));
@@ -341,12 +436,45 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
         mIssue.setDonation(Integer.parseInt(mTextViewDonation.getText().toString()));
         mIssue.setDetail(mEditTextDetails.getText().toString());
 
-        mIssue.saveEventually(new SaveCallback() {
+        mIssue.setStatus(statusSpinner.getSelectedItem().toString());
+
+        Logger.d(statusSpinner.getSelectedItem().toString());
+
+        JSONArray tags = new JSONArray();
+        for (int i = 0; i < tagsContainer.getChildCount(); i++) {
+
+            TextView t = (TextView) tagsContainer.getChildAt(i);
+            tags.put(t.getText().toString());
+        }
+
+        SlidingMenuRightFragment.updateTags(tags);
+
+        mIssue.setTags(tags);
+        if (issuePhoto != null) {
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            issuePhoto.compress(Bitmap.CompressFormat.JPEG, 35, stream);
+            byte[] data = stream.toByteArray();
+            ParseFile file = new ParseFile(System.currentTimeMillis() + ".jpeg", data);
+            mIssue.setPhoto(file);
+        } else {
+            Logger.e("need add photo");
+        }
+
+
+        mIssue.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
                 if (e == null) {
-                    Toast.makeText(getActivity(), "Saved OK", Toast.LENGTH_SHORT)
-                            .show();
+
+                    if (getActivity() != null) {
+                        Toast.makeText(getActivity(), "Saved OK", Toast.LENGTH_SHORT)
+                                .show();
+                    }
+                } else {
+                    if (getActivity() != null) {
+                        Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG)
+                                .show();
+                    }
                 }
             }
         });
@@ -361,8 +489,9 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
                 Logger.d("requestCode == FROM_CAMERA");
                 if (data != null) {
                     Bundle extras = data.getExtras();
-                    Bitmap bitMap = (Bitmap) extras.get("data");
-                    imageViewPhoto.setImageBitmap(bitMap);
+                    Bitmap bitmap = (Bitmap) extras.get("data");
+                    issuePhoto = bitmap;
+                    imageViewPhoto.setImageBitmap(bitmap);
                 } else {
                     Logger.d("from camera data == null");
                 }
@@ -371,6 +500,7 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
                 Logger.d("requestCode == FROM_GALLERY");
                 try {
                     Bitmap bitmap = BitmapFactory.decodeStream(((Context) activity).getContentResolver().openInputStream(data.getData()));
+                    issuePhoto = bitmap;
                     imageViewPhoto.setImageBitmap(bitmap);
                 } catch (Exception e) {
                     Logger.e("IssueFragment:  Error while FROM_GALLERY");

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -76,6 +77,10 @@ public class SignUpActivity extends Activity {
 
                 // Set up a new Parse user
                 ParseUser user = new ParseUser();
+
+                ParseACL acl = new ParseACL();
+                acl.setPublicReadAccess(true);
+
                 user.setUsername(usernameView.getText().toString());
                 user.setPassword(passwordView.getText().toString());
 
