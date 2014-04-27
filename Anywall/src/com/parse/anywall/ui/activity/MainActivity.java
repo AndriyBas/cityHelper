@@ -36,7 +36,6 @@ import com.parse.anywall.Application;
 import com.parse.anywall.R;
 import com.parse.anywall.model.AnywallPost;
 import com.parse.anywall.model.Issue;
-import com.parse.anywall.ui.fragment.IssueFragment;
 
 import java.util.*;
 
@@ -198,9 +197,9 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
 
                 if (currentObjectId == selectedObjectId) {
 
-                    Intent i = new Intent(MainActivity.this, IssueActivity.class);
+                    CURRENT_ISSUE = item;
 
-                    i.putExtra(IssueFragment.KEY_ISSUE, item);
+                    Intent i = new Intent(MainActivity.this, IssueActivity.class);
 
                     startActivity(i);
 
@@ -551,18 +550,19 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
             cleanUpMarkers(new HashSet<String>());
             return;
         }
+
         final ParseGeoPoint myPoint = geoPointFromLocation(myLoc);
         // Create the map Parse query
-        ParseQuery<AnywallPost> mapQuery = AnywallPost.getQuery();
+        ParseQuery<Issue> mapQuery = ParseQuery.getQuery(Issue.class);
         // Set up additional query filters
         mapQuery.whereWithinKilometers("location", myPoint, MAX_POST_SEARCH_DISTANCE);
         mapQuery.include("user");
         mapQuery.orderByDescending("createdAt");
         mapQuery.setLimit(MAX_POST_SEARCH_RESULTS);
         // Kick off the query in the background
-        mapQuery.findInBackground(new FindCallback<AnywallPost>() {
+        mapQuery.findInBackground(new FindCallback<Issue>() {
             @Override
-            public void done(List<AnywallPost> objects, ParseException e) {
+            public void done(List<Issue> objects, ParseException e) {
                 if (e != null) {
                     if (Application.APPDEBUG) {
                         Log.d(Application.APPTAG, "An error occurred while querying for map mIssueAdapter.", e);
@@ -580,17 +580,17 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
                 // Posts to show on the map
                 Set<String> toKeep = new HashSet<String>();
                 // Loop through the results of the search
-                for (AnywallPost post : objects) {
-                    // Add this post to the list of map pins to keep
-                    toKeep.add(post.getObjectId());
-                    // Check for an existing marker for this post
-                    Marker oldMarker = mapMarkers.get(post.getObjectId());
+                for (Issue issueItem : objects) {
+                    // Add this issueItem to the list of map pins to keep
+                    toKeep.add(issueItem.getObjectId());
+                    // Check for an existing marker for this issueItem
+                    Marker oldMarker = mapMarkers.get(issueItem.getObjectId());
                     // Set up the map marker's location
                     MarkerOptions markerOpts =
-                            new MarkerOptions().position(new LatLng(post.getLocation().getLatitude(), post
+                            new MarkerOptions().position(new LatLng(issueItem.getLocation().getLatitude(), issueItem
                                     .getLocation().getLongitude()));
                     // Set up the marker properties based on if it is within the search radius
-                    if (post.getLocation().distanceInKilometersTo(myPoint) > radius * METERS_PER_FEET
+                    if (issueItem.getLocation().distanceInKilometersTo(myPoint) > radius * METERS_PER_FEET
                             / METERS_PER_KILOMETER) {
                         // Check for an existing out of range marker
                         if (oldMarker != null) {
@@ -617,16 +617,16 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
                                 oldMarker.remove();
                             }
                         }
-                        // Display a green marker with the post information
+                        // Display a green marker with the issueItem information
                         markerOpts =
-                                markerOpts.title(post.getText()).snippet(post.getUser().getUsername())
+                                markerOpts.title(issueItem.getTitle()).snippet(issueItem.getDetail())
                                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
                                         .draggable(true);
                     }
                     // Add a new marker
                     Marker marker = map.getMap().addMarker(markerOpts);
-                    mapMarkers.put(post.getObjectId(), marker);
-                    if (post.getObjectId().equals(selectedObjectId)) {
+                    mapMarkers.put(issueItem.getObjectId(), marker);
+                    if (issueItem.getObjectId().equals(selectedObjectId)) {
                         marker.showInfoWindow();
                         selectedObjectId = null;
                         selectedObjectPosition = -1;
@@ -845,27 +845,23 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
     @Override
     public void onInfoWindowClick(Marker marker) {
 
-
         Intent i = new Intent(MainActivity.this, IssueActivity.class);
 
-        Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
-        if (myLoc == null) {
-            Toast.makeText(MainActivity.this,
-                    "Please try again after your location appears on the map.", Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        final ParseGeoPoint myPoint = geoPointFromLocation(myLoc);
+        final ParseGeoPoint myPoint = new ParseGeoPoint(marker.getPosition().latitude,
+                marker.getPosition().longitude);
 
         Issue issue = new Issue();
         issue.setLocation(myPoint);
 
-        i.putExtra(IssueFragment.KEY_ISSUE, issue);
-
+        CURRENT_ISSUE = issue;
 
 //        mIssueAdapter.getI
 
         startActivity(i);
+
+        if (CURRENT_ISSUE.getAuthor() == null) {
+            marker.remove();
+        }
     }
 
     /*

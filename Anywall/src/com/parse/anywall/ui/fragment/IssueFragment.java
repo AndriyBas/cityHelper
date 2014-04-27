@@ -10,6 +10,7 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.parse.anywall.R;
 import com.parse.anywall.model.Issue;
+import com.parse.anywall.ui.activity.MainActivity;
 
 /**
  * Created by badgateway on 26.04.14.
@@ -37,27 +38,13 @@ public class IssueFragment extends Fragment {
     private Button mButtonIWillBeThere;
 
 
-    public final static String KEY_ISSUE = "parse.current_issue";
-
-
-    public static IssueFragment newInstance(Issue issue) {
-
-        Bundle args = new Bundle();
-        args.putSerializable(KEY_ISSUE, issue);
-
-        IssueFragment f = new IssueFragment();
-        f.setArguments(args);
-
-        return f;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
         setHasOptionsMenu(true);
 
-        mIssue = (Issue) getArguments().getSerializable(KEY_ISSUE);
+        mIssue = MainActivity.CURRENT_ISSUE;
     }
 
     @Override
@@ -131,7 +118,7 @@ public class IssueFragment extends Fragment {
         mIssue.setDonation(Integer.parseInt(mTextViewDonation.getText().toString()));
         mIssue.setDetail(mEditTextDetails.getText().toString());
 
-        mIssue.saveInBackground(new SaveCallback() {
+        mIssue.saveEventually(new SaveCallback() {
             @Override
             public void done(ParseException e) {
                 if (e == null) {

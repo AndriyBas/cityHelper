@@ -22,10 +22,8 @@ public class IssueActivity extends FragmentActivity {
         Fragment fragment = fm.findFragmentById(getLayoutResId());
 
         if (fragment == null) {
-            fragment = IssueFragment.newInstance(
-                    (com.parse.anywall.model.Issue) getIntent()
-                            .getSerializableExtra(IssueFragment.KEY_ISSUE)
-            );
+            fragment = new IssueFragment();
+
             fm.beginTransaction()
                     .replace(getLayoutResId(), fragment)
                     .commit();
