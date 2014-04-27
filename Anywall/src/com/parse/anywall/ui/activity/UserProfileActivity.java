@@ -86,7 +86,7 @@ public class UserProfileActivity extends Activity implements View.OnClickListene
                                 .load(Uri.parse(f.getUrl()))
                                 .resize(300, 300)
                                 .centerCrop()
-                                .placeholder(R.drawable.ic_launcher)
+                                .placeholder(R.drawable.stub)
                                 .into(avatar);
                     }
                     rateValue.setText("" + uData.getRating());

@@ -12,7 +12,7 @@
             android:layout_width="@dimen/icon_width"
             android:layout_height="@dimen/icon_height"
             android:padding="2dp"
-            android:src="@drawable/ic_launcher"
+            android:src="@drawable/stub"
             android:layout_gravity="center_vertical"
             />
     <LinearLayout

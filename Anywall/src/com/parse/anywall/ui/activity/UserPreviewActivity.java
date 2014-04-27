@@ -40,7 +40,7 @@ public class UserPreviewActivity extends Activity {
                     .load(Uri.parse(f.getUrl()))
                     .resize(600, 600)
                     .centerCrop()
-                    .placeholder(R.drawable.ic_launcher)
+                    .placeholder(R.drawable.stub)
                     .into(photo);
         }
 

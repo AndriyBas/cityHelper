@@ -40,4 +40,13 @@
         android:text="Разом - ми сила"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
+    <ImageView
+            android:layout_width="500dp"
+            android:layout_height="500dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="23dp"
+            android:src="@drawable/splash"
+            android:layout_below="@+id/signUpButton"
+            />
+
 </RelativeLayout>

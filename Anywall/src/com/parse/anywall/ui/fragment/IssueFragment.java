@@ -147,7 +147,7 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
                     .load(Uri.parse(f.getUrl()))
                     .resize(300, 300)
                     .centerCrop()
-                    .placeholder(R.drawable.ic_launcher)
+                    .placeholder(R.drawable.stub)
                     .into(imageViewPhoto);
         }
             /*if (f != null) {
@@ -392,7 +392,7 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
                     if (prevCount != 0) {
                         mTextViewParticipants.setText("" + (prevCount - 1));
                         willGo = false;
-                        mButtonIWillBeThere.setText("I WILL BE THERE");
+                        mButtonIWillBeThere.setText("Я ПРИЙДУ");
                     } else {
                         Logger.e("prev count = 0");
                     }
@@ -400,7 +400,7 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
                     int prevCount = Integer.parseInt(mTextViewParticipants.getText().toString());
                     mTextViewParticipants.setText("" + (prevCount + 1));
                     willGo = true;
-                    mButtonIWillBeThere.setText("CANCEL");
+                    mButtonIWillBeThere.setText("СКАСУВАТИ");
                 }
                 break;
             }

@@ -1,6 +1,7 @@
 package com.parse.anywall.ui.activity;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.graphics.Bitmap;
@@ -126,8 +127,13 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
     public static ListView postsView;
 
 
+    public static Context localAppContext;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+        localAppContext = this;
+
         super.onCreate(savedInstanceState);
         radius = Application.getSearchDistance();
         lastRadius = radius;
@@ -358,7 +364,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
 
 
         // Set up the query adapter
-        mIssueAdapter = new ParseQueryAdapter<Issue>(Application.appContext, factory) {
+        mIssueAdapter = new ParseQueryAdapter<Issue>(localAppContext, factory) {
             @Override
             public View getItemView(Issue issue, View view, ViewGroup parent) {
                 if (view == null) {

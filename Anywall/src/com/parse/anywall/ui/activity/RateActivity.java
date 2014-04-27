@@ -67,7 +67,7 @@ public class RateActivity extends Activity implements AdapterView.OnItemClickLis
                             .load(Uri.parse(f.getUrl()))
                             .resize(300, 300)
                             .centerCrop()
-                            .placeholder(R.drawable.ic_launcher)
+                            .placeholder(R.drawable.stub)
                             .into(iv);
                 }
                 return view;

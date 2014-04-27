@@ -29,7 +29,7 @@
                        android:layout_height="100dp"
                        android:id="@+id/issue_imageView"
                        android:scaleType="centerInside"
-                       android:background="@android:color/darker_gray"
+                       android:src="@drawable/stub"
                        android:cropToPadding="true"/>
 
             <ImageButton
