@@ -71,7 +71,7 @@ public class UserProfileActivity extends Activity implements View.OnClickListene
 
         ParseQuery<UserData> query = ParseQuery.getQuery(UserData.class);
 
-        query.whereEqualTo("uid", ParseUser.getCurrentUser().getObjectId());
+        query.whereEqualTo("userOK", ParseUser.getCurrentUser());
 
         query.getFirstInBackground(new GetCallback<UserData>() {
             @Override

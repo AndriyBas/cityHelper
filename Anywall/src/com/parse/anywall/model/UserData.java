@@ -3,16 +3,17 @@ package com.parse.anywall.model;
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 @ParseClassName("UserData")
 public class UserData extends ParseObject {
 
-    public void setUID(String uid) {
-        put("uid", uid);
+    public void setUser(ParseUser user) {
+        put("userOK", user);
     }
 
-    public String getUID() {
-        return getString("uid");
+    public ParseUser getUser() {
+        return getParseUser("userOK");
     }
 
     public ParseFile getPhoto() {

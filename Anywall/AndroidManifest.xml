@@ -116,6 +116,14 @@
                 android:name=".ui.activity.CityHelperBaseActivity"
                 android:screenOrientation="portrait"
                 />
+
+        <activity
+                android:name=".ui.activity.RateActivity"
+                android:label="TOP 10"
+                android:screenOrientation="portrait"/>
+        <activity
+                android:name=".ui.activity.UserPreviewActivity"
+                android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

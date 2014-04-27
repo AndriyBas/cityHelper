@@ -77,6 +77,8 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
     int month;
     int day;
 
+    MenuItem saveItem;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -161,6 +163,7 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
 //        }
 
         if (!ParseUser.getCurrentUser().getObjectId().equals(mIssue.getAuthor().getObjectId())) {
+
             statusSpinner.setEnabled(false);
             editTextTitle.setEnabled(false);
             editTextTag.setEnabled(false);
@@ -168,6 +171,7 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
             mEditTextDetails.setEnabled(false);
             imageButtonTakePhoto.setEnabled(false);
             mButtonDate.setEnabled(false);
+            saveItem.setEnabled(false);
         }
 
     }
@@ -291,6 +295,8 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
         mTextViewParticipants = (TextView) v.findViewById(R.id.issue_participants_text);
 
         statusSpinner = (Spinner) v.findViewById(R.id.statuSpinner);
+
+        saveItem = (MenuItem) v.findViewById(R.id.menu_item_save_issue);
     }
 
     @Override

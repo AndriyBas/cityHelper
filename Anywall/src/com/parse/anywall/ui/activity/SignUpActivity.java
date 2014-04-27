@@ -97,7 +97,7 @@ public class SignUpActivity extends Activity {
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
                             UserData userData = new UserData();
-                            userData.setUID(user.getObjectId());
+                            userData.setUser(user);
 //                            userData.setPhoto(null);
                             userData.setRating(0);
                             userData.saveInBackground(new SaveCallback() {
