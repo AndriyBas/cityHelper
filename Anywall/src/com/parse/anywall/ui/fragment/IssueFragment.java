@@ -31,6 +31,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+
 public class IssueFragment extends Fragment implements View.OnClickListener {
 
     private boolean hide = false;
@@ -85,6 +86,7 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
         setRetainInstance(true);
         setHasOptionsMenu(true);
 
+
         mIssue = MainActivity.CURRENT_ISSUE;
 
 
@@ -100,7 +102,8 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
 
         mEditTextDetails.setText(mIssue.getDetail());
 
-        statusSpinner.setSelection(1);
+
+        statusSpinner.setSelection(3);
         String status = mIssue.getStatus();
         if (status != null) {
             for (int i = 0; i < statuses.length; i++) {
@@ -110,6 +113,7 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
                 }
             }
         }
+
 
         tagsContainer.removeAllViews();
 
@@ -133,6 +137,7 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
         }
 
 //        try {
+
 
         ParseFile f = mIssue.getPhoto();
 
@@ -251,8 +256,8 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
                 android.R.layout.simple_spinner_dropdown_item,
                 statuses);
         statusSpinner.setAdapter(spinnerArrayAdapter);
-        statusSpinner.setSelection(1);
 
+        statusSpinner.setSelection(3);
         addComment.setOnClickListener(this);
         imageButtonTakePhoto.setOnClickListener(this);
         mButtonAddTag.setOnClickListener(this);
@@ -299,11 +304,13 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
         saveItem = (MenuItem) v.findViewById(R.id.menu_item_save_issue);
     }
 
+
     @Override
     public void onResume() {
         super.onResume();
         mCommentAdapter.loadObjects();
     }
+
 
     @Override
     public void onClick(View v) {

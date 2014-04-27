@@ -18,12 +18,17 @@ public class Application extends android.app.Application {
 
     private static SharedPreferences preferences;
 
+
+    public static Context appContext;
+
     public Application() {
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        appContext = getApplicationContext();
 
         ParseObject.registerSubclass(AnywallPost.class);
         ParseObject.registerSubclass(Tag.class);
@@ -34,6 +39,7 @@ public class Application extends android.app.Application {
         Parse.initialize(this, "iTUHhvYuaOdpVQz5aQkvnJNEd7hxZTyBxqygUPXK",
                 "Le3XjYFDDJ5ZzOkUSZbqzO1ybdYfjxdqgdwAxJ40");
         preferences = getSharedPreferences("com.parse.anywall", Context.MODE_PRIVATE);
+        getApplicationContext();
     }
 
     public static float getSearchDistance() {
@@ -43,5 +49,6 @@ public class Application extends android.app.Application {
     public static void setSearchDistance(float value) {
         preferences.edit().putFloat(KEY_SEARCH_DISTANCE, value).commit();
     }
+
 
 }
