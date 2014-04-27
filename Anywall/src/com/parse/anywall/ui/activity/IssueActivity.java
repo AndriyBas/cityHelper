@@ -17,11 +17,15 @@ public class IssueActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
 //        setContentView(getLayoutResId());
 
+
         android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
         Fragment fragment = fm.findFragmentById(getLayoutResId());
 
         if (fragment == null) {
-            fragment = new IssueFragment();
+            fragment = IssueFragment.newInstance(
+                    (com.parse.anywall.model.Issue) getIntent()
+                            .getSerializableExtra(IssueFragment.KEY_ISSUE)
+            );
             fm.beginTransaction()
                     .replace(getLayoutResId(), fragment)
                     .commit();

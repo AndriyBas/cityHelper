@@ -4,6 +4,10 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.*;
 import android.widget.*;
+import com.parse.ParseACL;
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 import com.parse.anywall.R;
 import com.parse.anywall.model.Issue;
 
@@ -32,11 +36,28 @@ public class IssueFragment extends Fragment {
     private Button mButtonDonate;
     private Button mButtonIWillBeThere;
 
+
+    public final static String KEY_ISSUE = "parse.current_issue";
+
+
+    public static IssueFragment newInstance(Issue issue) {
+
+        Bundle args = new Bundle();
+        args.putSerializable(KEY_ISSUE, issue);
+
+        IssueFragment f = new IssueFragment();
+        f.setArguments(args);
+
+        return f;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
         setHasOptionsMenu(true);
+
+        mIssue = (Issue) getArguments().getSerializable(KEY_ISSUE);
     }
 
     @Override
@@ -92,8 +113,33 @@ public class IssueFragment extends Fragment {
     }
 
     private void collectDataAndSaveIssue() {
-        if (mIssue == null) {
-            mIssue = new Issue();
+        if (mIssue.getAuthor() == null) {
+            ParseACL acl = new ParseACL();
+            // Give public read access
+            acl.setPublicReadAccess(true);
+            acl.setWriteAccess(ParseUser.getCurrentUser(), true);
+            mIssue.setACL(acl);
+
+            mIssue.setAuthor(ParseUser.getCurrentUser());
+            mIssue.setDonation(0);
+            mIssue.setParticipants(0);
         }
+
+        mIssue.setTitle(editTextTitle.getText().toString());
+        mIssue.setParticipants(Integer.parseInt(mTextViewParticipants.getText().toString()));
+
+        mIssue.setDonation(Integer.parseInt(mTextViewDonation.getText().toString()));
+        mIssue.setDetail(mEditTextDetails.getText().toString());
+
+        mIssue.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+                    Toast.makeText(getActivity(), "Saved OK", Toast.LENGTH_SHORT)
+                            .show();
+                }
+            }
+        });
+
     }
 }

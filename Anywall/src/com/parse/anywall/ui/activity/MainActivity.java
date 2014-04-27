@@ -35,6 +35,8 @@ import com.parse.*;
 import com.parse.anywall.Application;
 import com.parse.anywall.R;
 import com.parse.anywall.model.AnywallPost;
+import com.parse.anywall.model.Issue;
+import com.parse.anywall.ui.fragment.IssueFragment;
 
 import java.util.*;
 
@@ -107,6 +109,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
     private int mostRecentMapUpdate = 0;
     private boolean hasSetUpInitialLocation = false;
     private String selectedObjectId;
+    private int selectedObjectPosition;
     private Location lastLocation = null;
     private Location currentLocation = null;
 
@@ -117,10 +120,12 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
     private LocationClient locationClient;
 
     // Adapter for the Parse query
-    private ParseQueryAdapter<AnywallPost> posts;
+    private ParseQueryAdapter<Issue> mIssueAdapter;
 
 
     private Marker activeMarker;
+
+    public static Issue CURRENT_ISSUE;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -145,11 +150,11 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
         locationClient = new LocationClient(this, this, this);
 
         // Set up a customized query
-        ParseQueryAdapter.QueryFactory<AnywallPost> factory =
-                new ParseQueryAdapter.QueryFactory<AnywallPost>() {
-                    public ParseQuery<AnywallPost> create() {
+        ParseQueryAdapter.QueryFactory<Issue> factory =
+                new ParseQueryAdapter.QueryFactory<Issue>() {
+                    public ParseQuery<Issue> create() {
                         Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
-                        ParseQuery<AnywallPost> query = AnywallPost.getQuery();
+                        ParseQuery<Issue> query = ParseQuery.getQuery(Issue.class);
                         query.include("user");
                         query.orderByDescending("createdAt");
                         query.whereWithinKilometers("location", geoPointFromLocation(myLoc), radius
@@ -160,9 +165,9 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
                 };
 
         // Set up the query adapter
-        posts = new ParseQueryAdapter<AnywallPost>(this, factory) {
+        mIssueAdapter = new ParseQueryAdapter<Issue>(this, factory) {
             @Override
-            public View getItemView(AnywallPost post, View view, ViewGroup parent) {
+            public View getItemView(Issue issue, View view, ViewGroup parent) {
                 if (view == null) {
                     view = View.inflate(getContext(), R.layout.item_task_post, null);
                 }
@@ -175,30 +180,36 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
         };
 
         // Disable automatic loading when the adapter is attached to a view.
-        posts.setAutoload(false);
+        mIssueAdapter.setAutoload(false);
 
         // Disable pagination, we'll manage the query limit ourselves
-        posts.setPaginationEnabled(false);
+        mIssueAdapter.setPaginationEnabled(false);
 
         // Attach the query adapter to the view
         ListView postsView = (ListView) findViewById(R.id.postsView);
-        postsView.setAdapter(posts);
+        postsView.setAdapter(mIssueAdapter);
 
         // Set up the handler for an item's selection
         postsView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                final AnywallPost item = posts.getItem(position);
+                final Issue item = mIssueAdapter.getItem(position);
 
                 String currentObjectId = item.getObjectId();
 
                 if (currentObjectId == selectedObjectId) {
 
                     Intent i = new Intent(MainActivity.this, IssueActivity.class);
+
+                    i.putExtra(IssueFragment.KEY_ISSUE, item);
+
                     startActivity(i);
+
                     return;
                 }
 
                 selectedObjectId = currentObjectId;
+                selectedObjectPosition = position;
+
                 map.getMap().animateCamera(
                         CameraUpdateFactory.newLatLng(new LatLng(item.getLocation().getLatitude(), item
                                 .getLocation().getLongitude())), new CancelableCallback() {
@@ -241,7 +252,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
         Button postButton = (Button) findViewById(R.id.postButton);
         postButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                // Only allow posts if we have a location
+                // Only allow mIssueAdapter if we have a location
                 Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
                 if (myLoc == null) {
                     Toast.makeText(MainActivity.this,
@@ -525,7 +536,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
         if (myLoc != null) {
             // Refreshes the list view with new data based
             // usually on updated location data.
-            posts.loadObjects();
+            mIssueAdapter.loadObjects();
         }
     }
 
@@ -554,7 +565,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
             public void done(List<AnywallPost> objects, ParseException e) {
                 if (e != null) {
                     if (Application.APPDEBUG) {
-                        Log.d(Application.APPTAG, "An error occurred while querying for map posts.", e);
+                        Log.d(Application.APPTAG, "An error occurred while querying for map mIssueAdapter.", e);
                     }
                     return;
                 }
@@ -618,6 +629,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
                     if (post.getObjectId().equals(selectedObjectId)) {
                         marker.showInfoWindow();
                         selectedObjectId = null;
+                        selectedObjectPosition = -1;
                     }
                 }
                 // Clean up old markers.
@@ -796,7 +808,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
             }
             case (R.id.menu_item_add_task): {
 
-                // Only allow posts if we have a location
+                // Only allow mIssueAdapter if we have a location
                 Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
 
                 if (myLoc == null) {
@@ -832,7 +844,27 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
 
     @Override
     public void onInfoWindowClick(Marker marker) {
+
+
         Intent i = new Intent(MainActivity.this, IssueActivity.class);
+
+        Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
+        if (myLoc == null) {
+            Toast.makeText(MainActivity.this,
+                    "Please try again after your location appears on the map.", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        final ParseGeoPoint myPoint = geoPointFromLocation(myLoc);
+
+        Issue issue = new Issue();
+        issue.setLocation(myPoint);
+
+        i.putExtra(IssueFragment.KEY_ISSUE, issue);
+
+
+//        mIssueAdapter.getI
+
         startActivity(i);
     }
 
