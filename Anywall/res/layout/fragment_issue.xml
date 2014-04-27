@@ -45,15 +45,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
-
-            <TextView
-                    android:id="@+id/issue_author"
-                    android:layout_width="match_parent"
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Author : Serhii Ololo"
-                    android:layout_marginRight="10dp"
-                    style="?android:listSeparatorTextViewStyle"/>
-
+                    android:layout_weight="1">
+                <TextView
+                        android:id="@+id/issue_author"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="2"
+                        android:text="Author : Serhii Ololo"
+                        android:layout_marginRight="10dp"
+                        style="?android:listSeparatorTextViewStyle"/>
+                <TextView
+                        android:id="@+id/issue_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:text="Status:"
+                        android:layout_marginRight="10dp"
+                        style="?android:listSeparatorTextViewStyle"/>
+                <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/statuSpinner"/>
+            </LinearLayout>
             <TextView android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:text="TITLE"
@@ -91,35 +108,37 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!--<Spinner android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginRight="10dp"-->
-    <!--android:layout_marginLeft="10dp"-->
-    <!--android:layout_marginTop="10dp"/>-->
-    <LinearLayout android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="horizontal"
-                  android:layout_marginTop="10dp"
-                  android:layout_marginLeft="5dp"
-                  android:id="@+id/tagsContainer">
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="#tag1"
-                  android:textSize="20dp"/>
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="#tagwsd2"
-                  android:textSize="20dp"
-                  android:layout_marginLeft="5dp"/>
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/tagsContainer">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#tag1"
+                android:textSize="20dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#tagwsd2"
+                android:textSize="20dp"
+                android:layout_marginLeft="5dp"/>
     </LinearLayout>
-    <LinearLayout android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="horizontal"
-                  android:layout_marginTop="10dp">
-        <LinearLayout android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:layout_weight="1"
-                      android:orientation="vertical">
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:text="Participants: "
@@ -205,6 +224,7 @@
               android:text="COMMENTS"
               style="?android:listSeparatorTextViewStyle"
               android:layout_marginTop="20dp"/>
+
     <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
@@ -216,16 +236,7 @@
                 android:orientation="vertical"
                 android:layout_alignParentBottom="true"
                 android:id="@+id/bottomLin">
-            <TextView
-                    android:id="@+id/tvAddComm"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Add Your Comment"
-                    android:textSize="16dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginRight="5dp">
-            </TextView>
+
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="fill_parent"
@@ -237,7 +248,9 @@
                         android:layout_weight="4"
                         android:layout_marginTop="6dp"
                         android:layout_marginBottom="4dp"
-                        android:layout_marginLeft="5dp"/>
+                        android:layout_marginLeft="5dp"
+                        android:hint="Enter your comment here"
+                        />
                 <Button
                         android:id="@+id/addCommentButton"
                         android:layout_width="wrap_content"

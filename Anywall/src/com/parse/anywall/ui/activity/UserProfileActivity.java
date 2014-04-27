@@ -41,6 +41,7 @@ public class UserProfileActivity extends Activity implements View.OnClickListene
         setupPrefs();
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     private void initPrefs() {
@@ -184,8 +185,8 @@ public class UserProfileActivity extends Activity implements View.OnClickListene
                 Logger.d("requestCode == FROM_CAMERA");
                 if (data != null) {
                     Bundle extras = data.getExtras();
-                    Bitmap bitMap = (Bitmap) extras.get("data");
-                    avatar.setImageBitmap(bitMap);
+                    Bitmap bitmap = (Bitmap) extras.get("data");
+                    avatar.setImageBitmap(bitmap);
                 } else {
                     Logger.d("from camera data == null");
                 }

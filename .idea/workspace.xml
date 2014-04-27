@@ -31,7 +31,8 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="DEBUG" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="oyster" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c53aa87-f8ee-4501-97d5-436dc284c12b" name="Default" comment="" />
@@ -100,40 +101,39 @@
       <file leaf-file-name="fragment_issue.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Anywall/res/layout/fragment_issue.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="243" column="10" selection-start="10718" selection-end="10718" vertical-scroll-proportion="-5.22" vertical-offset="3870" max-vertical-offset="4420">
+            <state line="256" column="10" selection-start="11075" selection-end="11075" vertical-scroll-proportion="-5.22" vertical-offset="4091" max-vertical-offset="4641">
               <folding />
             </state>
           </provider>
           <provider editor-type-id="android-designer">
             <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_user_rate.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Anywall/res/layout/activity_user_rate.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="42" selection-start="449" selection-end="449" vertical-scroll-proportion="0.32945737" vertical-offset="0" max-vertical-offset="516">
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Anywall/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="54" selection-start="3689" selection-end="3689" vertical-scroll-proportion="0.0" vertical-offset="1275" max-vertical-offset="2159">
-              <folding />
-            </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Issue.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/Issue.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="37" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1547">
+            <state line="16" column="0" selection-start="326" selection-end="326" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="1632">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IssueFragment.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/fragment/IssueFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="475" column="22" selection-start="17082" selection-end="17092" vertical-scroll-proportion="15.038462" vertical-offset="8177" max-vertical-offset="8874">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="106" column="81" selection-start="3872" selection-end="3872" vertical-scroll-proportion="0.0" vertical-offset="1802" max-vertical-offset="15691">
               <folding />
             </state>
           </provider>
@@ -142,21 +142,8 @@
       <file leaf-file-name="Comment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/Comment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="50" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="714">
-              <folding>
-                <element signature="e#286#287#0" expanded="true" />
-                <element signature="e#313#314#0" expanded="true" />
-                <element signature="e#353#354#0" expanded="true" />
-                <element signature="e#385#386#0" expanded="true" />
-                <element signature="e#420#421#0" expanded="true" />
-                <element signature="e#451#452#0" expanded="true" />
-                <element signature="e#499#500#0" expanded="true" />
-                <element signature="e#539#540#0" expanded="true" />
-                <element signature="e#573#574#0" expanded="true" />
-                <element signature="e#603#604#0" expanded="true" />
-                <element signature="e#649#650#0" expanded="true" />
-                <element signature="e#687#688#0" expanded="true" />
-              </folding>
+            <state line="6" column="27" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="646">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -173,35 +160,16 @@
       <file leaf-file-name="IssueActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/IssueActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="39" selection-start="843" selection-end="843" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
+            <state line="26" column="39" selection-start="843" selection-end="843" vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="850">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IssueFragment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/fragment/IssueFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="34" selection-start="2833" selection-end="2833" vertical-scroll-proportion="0.0" vertical-offset="1836" max-vertical-offset="5678">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#7259#7815#0" expanded="true" />
-                <element signature="e#7796#7797#0" expanded="true" />
-                <element signature="e#7870#8097#0" expanded="true" />
-                <element signature="e#8078#8079#0" expanded="true" />
-                <element signature="e#9140#9492#0" expanded="true" />
-                <element signature="e#9473#9474#0" expanded="true" />
-                <element signature="e#11414#11699#0" expanded="true" />
-                <element signature="e#11688#11689#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserProfileActivity.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="UserProfileActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/UserProfileActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="117" column="31" selection-start="3416" selection-end="4475" vertical-scroll-proportion="0.0" vertical-offset="1066" max-vertical-offset="2890">
+            <state line="187" column="31" selection-start="6882" selection-end="6882" vertical-scroll-proportion="0.29166666" vertical-offset="2307" max-vertical-offset="2907">
               <folding />
             </state>
           </provider>
@@ -210,17 +178,8 @@
       <file leaf-file-name="ImageProcessor.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/ImageProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="38" selection-start="4390" selection-end="4390" vertical-scroll-proportion="0.0" vertical-offset="556" max-vertical-offset="1462">
-              <folding>
-                <element signature="e#1974#2018#0" expanded="true" />
-                <element signature="e#2054#2100#0" expanded="true" />
-                <element signature="e#2144#2190#0" expanded="true" />
-                <element signature="e#2470#2515#0" expanded="true" />
-                <element signature="e#3325#3369#0" expanded="true" />
-                <element signature="e#3405#3451#0" expanded="true" />
-                <element signature="e#3495#3541#0" expanded="true" />
-                <element signature="e#3821#3866#0" expanded="true" />
-              </folding>
+            <state line="106" column="38" selection-start="4390" selection-end="4390" vertical-scroll-proportion="0.0" vertical-offset="1802" max-vertical-offset="2023">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -256,13 +215,13 @@
         <option value="$PROJECT_DIR$/Anywall/res/layout/comment_item.xml" />
         <option value="$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/Comment.java" />
         <option value="$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/adapters/CommentAdapter.java" />
-        <option value="$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/UserProfileActivity.java" />
         <option value="$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/ImageProcessor.java" />
         <option value="$PROJECT_DIR$/Anywall/src/com/parse/anywall/FlowLayout.java" />
-        <option value="$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/fragment/IssueFragment.java" />
         <option value="$PROJECT_DIR$/Anywall/res/layout/fragment_issue.xml" />
-        <option value="$PROJECT_DIR$/Anywall/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/Anywall/res/layout/activity_user_rate.xml" />
+        <option value="$PROJECT_DIR$/Anywall/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/fragment/IssueFragment.java" />
+        <option value="$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/UserProfileActivity.java" />
       </list>
     </option>
   </component>
@@ -287,12 +246,6 @@
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
-  <component name="ProjectStructureProblems">
-    <ignored-problems>
-      <problem id="unused-library(library:project:google-play-services)" />
-      <problem id="unused-library(library:project:google-play-services)" />
-    </ignored-problems>
-  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
@@ -306,6 +259,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -363,30 +318,8 @@
               <option name="myItemId" value="ui" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cityHelper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Anywall" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="anywall" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adapters" />
+              <option name="myItemId" value="fragment" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -472,8 +405,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -494,7 +425,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../newsFeed" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Anywall/libs/picasso-2.2.0.jar!/" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
@@ -685,9 +616,6 @@
     </task>
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6264000" />
-  </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="776" extended-state="6" />
     <editor active="true" />
@@ -695,7 +623,7 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32928804" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -711,7 +639,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23543689" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23505655" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32766616" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -744,19 +672,18 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/ImageProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2023">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/fragment/IssueFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="18" selection-start="489" selection-end="489" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1037">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7259#7815#0" expanded="true" />
-            <element signature="e#7796#7797#0" expanded="true" />
-            <element signature="e#7870#8097#0" expanded="true" />
-            <element signature="e#8078#8079#0" expanded="true" />
-            <element signature="e#9140#9492#0" expanded="true" />
-            <element signature="e#9473#9474#0" expanded="true" />
-            <element signature="e#11414#11699#0" expanded="true" />
-            <element signature="e#11688#11689#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -784,9 +711,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/camera/IssueCameraFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="35" selection-start="1405" selection-end="1405" vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="3842">
-          <folding />
-        </state>
+        <state line="45" column="35" selection-start="1405" selection-end="1405" vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="3842" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/MainActivity.java">
@@ -804,13 +729,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/res/layout/activity_issue_fragment.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/IssueActivity.java">
@@ -821,13 +746,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/res/layout/fragment_issue.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2941">
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/Application.java">
@@ -923,41 +848,29 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/res/layout/activity_issue_fragment.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/CityUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="40" selection-start="1886" selection-end="1886" vertical-scroll-proportion="0.31166667" vertical-offset="510" max-vertical-offset="2363" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Anywall/res/layout/fragment_issue.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Anywall/res/layout/fragment_issue.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="127" column="0" selection-start="5014" selection-end="5014" vertical-scroll-proportion="-17.68" vertical-offset="1275" max-vertical-offset="2907">
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="83" column="19" selection-start="3277" selection-end="3277" vertical-scroll-proportion="0.745" vertical-offset="964" max-vertical-offset="1598">
-          <folding>
-            <element signature="e#1554#1572#0" expanded="false" />
-            <element signature="e#1737#1755#0" expanded="false" />
-            <element signature="e#2089#2128#0" expanded="false" />
-            <element signature="e#2389#2407#0" expanded="false" />
-            <element signature="e#3010#3028#0" expanded="false" />
-            <element signature="e#3270#3303#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -998,79 +911,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/camera/IssueCameraFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="35" selection-start="1405" selection-end="1405" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="3417">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="747" column="31" selection-start="30589" selection-end="30589" vertical-scroll-proportion="0.0" vertical-offset="12087" max-vertical-offset="14450">
-          <folding />
-        </state>
+        <state line="45" column="35" selection-start="1405" selection-end="1405" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="3417" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/res/layout/comment_item.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="33" selection-start="1124" selection-end="1124" vertical-scroll-proportion="-7.6" vertical-offset="96" max-vertical-offset="612">
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
     </entry>
     <entry file="file://D:/android_SDK/adt-bundle-windows-x86-20130219/sdk/sources/android-17/android/widget/ArrayAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="335" column="13" selection-start="11415" selection-end="11415" vertical-scroll-proportion="0.33333334" vertical-offset="5002" max-vertical-offset="8364">
-          <folding />
-        </state>
+        <state line="335" column="13" selection-start="11415" selection-end="11415" vertical-scroll-proportion="0.33333334" vertical-offset="5002" max-vertical-offset="8364" />
       </provider>
     </entry>
     <entry file="file://D:/android_SDK/adt-bundle-windows-x86-20130219/sdk/sources/android-17/android/app/Activity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="651" column="28" selection-start="32521" selection-end="32521" vertical-scroll-proportion="0.3321976" vertical-offset="9512" max-vertical-offset="88213">
-          <folding />
-        </state>
+        <state line="651" column="28" selection-start="32521" selection-end="32521" vertical-scroll-proportion="0.3321976" vertical-offset="9512" max-vertical-offset="88213" />
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/Anywall/libs/android-support-v4.jar!/android/support/v4/app/Fragment.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="144" column="16" selection-start="5564" selection-end="5564" vertical-scroll-proportion="0.3469751" vertical-offset="2236" max-vertical-offset="4607">
-          <folding />
-        </state>
+        <state line="144" column="16" selection-start="5564" selection-end="5564" vertical-scroll-proportion="0.3469751" vertical-offset="2236" max-vertical-offset="4607" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/ImageProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="106" column="38" selection-start="4390" selection-end="4390" vertical-scroll-proportion="0.0" vertical-offset="556" max-vertical-offset="1462">
-          <folding>
-            <element signature="e#1974#2018#0" expanded="true" />
-            <element signature="e#2054#2100#0" expanded="true" />
-            <element signature="e#2144#2190#0" expanded="true" />
-            <element signature="e#2470#2515#0" expanded="true" />
-            <element signature="e#3325#3369#0" expanded="true" />
-            <element signature="e#3405#3451#0" expanded="true" />
-            <element signature="e#3495#3541#0" expanded="true" />
-            <element signature="e#3821#3866#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../threeboots/ThreeBoots/ThreeBoots/src/com/ThreeBoots/Activities/article/EditArticleActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="37" selection-start="2493" selection-end="2493" vertical-scroll-proportion="0.4216028" vertical-offset="489" max-vertical-offset="6834">
-          <folding>
-            <element signature="e#0#16665#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/UserProfileActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="31" selection-start="3416" selection-end="4475" vertical-scroll-proportion="0.0" vertical-offset="1066" max-vertical-offset="2890">
-          <folding />
-        </state>
+        <state line="71" column="37" selection-start="2493" selection-end="2493" vertical-scroll-proportion="0.4216028" vertical-offset="489" max-vertical-offset="6834" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/Tag.java">
@@ -1082,45 +960,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/Comment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="50" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="714">
-          <folding>
-            <element signature="e#286#287#0" expanded="true" />
-            <element signature="e#313#314#0" expanded="true" />
-            <element signature="e#353#354#0" expanded="true" />
-            <element signature="e#385#386#0" expanded="true" />
-            <element signature="e#420#421#0" expanded="true" />
-            <element signature="e#451#452#0" expanded="true" />
-            <element signature="e#499#500#0" expanded="true" />
-            <element signature="e#539#540#0" expanded="true" />
-            <element signature="e#573#574#0" expanded="true" />
-            <element signature="e#603#604#0" expanded="true" />
-            <element signature="e#649#650#0" expanded="true" />
-            <element signature="e#687#688#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/adapters/CommentAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="33" selection-start="1495" selection-end="1495" vertical-scroll-proportion="1.4816667" vertical-offset="80" max-vertical-offset="1122">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1460#1461#0" expanded="true" />
-            <element signature="e#1500#1501#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Anywall/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="54" selection-start="3689" selection-end="3689" vertical-scroll-proportion="0.0" vertical-offset="1275" max-vertical-offset="2159">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/Issue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="37" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1547">
+        <state line="6" column="27" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
           <folding />
         </state>
       </provider>
@@ -1132,41 +972,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/fragment/IssueFragment.java">
+    <entry file="file://$PROJECT_DIR$/Anywall/res/layout/fragment_issue.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="34" selection-start="2833" selection-end="2833" vertical-scroll-proportion="0.0" vertical-offset="1836" max-vertical-offset="5678">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7259#7815#0" expanded="true" />
-            <element signature="e#7796#7797#0" expanded="true" />
-            <element signature="e#7870#8097#0" expanded="true" />
-            <element signature="e#8078#8079#0" expanded="true" />
-            <element signature="e#9140#9492#0" expanded="true" />
-            <element signature="e#9473#9474#0" expanded="true" />
-            <element signature="e#11414#11699#0" expanded="true" />
-            <element signature="e#11688#11689#0" expanded="true" />
-          </folding>
+        <state line="256" column="10" selection-start="11075" selection-end="11075" vertical-scroll-proportion="-5.22" vertical-offset="4091" max-vertical-offset="4641">
+          <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Anywall/res/layout/fragment_issue.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="243" column="10" selection-start="10718" selection-end="10718" vertical-scroll-proportion="-5.22" vertical-offset="3870" max-vertical-offset="4420">
+        <state line="106" column="81" selection-start="3872" selection-end="3872" vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="14824">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Anywall/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="16" selection-start="3707" selection-end="3707" vertical-scroll-proportion="0.385" vertical-offset="1384" max-vertical-offset="2159">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/res/layout/activity_user_rate.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="42" selection-start="449" selection-end="449" vertical-scroll-proportion="0.32945737" vertical-offset="0" max-vertical-offset="516">
+        <state line="10" column="42" selection-start="449" selection-end="449" vertical-scroll-proportion="-3.4" vertical-offset="0" max-vertical-offset="289">
           <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/Issue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="0" selection-start="326" selection-end="326" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1683">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/CityUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="205" selection-end="205" vertical-scroll-proportion="0.255" vertical-offset="0" max-vertical-offset="600">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/fragment/IssueFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="475" column="22" selection-start="17082" selection-end="17092" vertical-scroll-proportion="15.038462" vertical-offset="8177" max-vertical-offset="8874">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/UserProfileActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="187" column="31" selection-start="6882" selection-end="6882" vertical-scroll-proportion="0.29166666" vertical-offset="2307" max-vertical-offset="2907">
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
@@ -1221,7 +1088,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Anywall</last-edited>
+          <last-edited>SlidingMenuLibrary</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

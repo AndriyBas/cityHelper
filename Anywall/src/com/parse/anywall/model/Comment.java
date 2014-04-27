@@ -1,36 +1,32 @@
 package com.parse.anywall.model;
 
-public class Comment {
-    private String text;
-    private String authorId;
-    private String issueId;
+import com.parse.ParseClassName;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
 
-    public Comment(String text, String authorId) {
-        this.text = text;
-        this.authorId = authorId;
+@ParseClassName("Comments")
+public class Comment extends ParseObject {
+    public ParseUser getAuthor() {
+        return getParseUser("author");
+    }
+
+    public void setAuthor(ParseUser author) {
+        put("author", author);
     }
 
     public String getText() {
-        return text;
+        return getString("text");
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setText(String value) {
+        put("text", value);
     }
 
-    public String getAuthorId() {
-        return authorId;
+    public void setIssue(Issue issue) {
+        put("issue", issue);
     }
 
-    public void setAuthorId(String authorId) {
-        this.authorId = authorId;
-    }
-
-    public String getIssueId() {
-        return issueId;
-    }
-
-    public void setIssueId(String issueId) {
-        this.issueId = issueId;
+    public Issue getIssue() {
+        return (Issue) getParseObject("issue");
     }
 }
