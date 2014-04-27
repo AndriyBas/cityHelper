@@ -65,7 +65,7 @@ public class UserProfileActivity extends Activity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.prefSetAvatar: {
-                showImagePickerDialog(activity, false);
+                ImageProcessor.showImagePickerDialog(activity, false);
                 break;
             }
             case R.id.prefName: {
@@ -145,37 +145,8 @@ public class UserProfileActivity extends Activity implements View.OnClickListene
             }
         }
     }
+ 
 
-    private void showImagePickerDialog(final Activity act, final boolean isClose) {
-        AlertDialog.Builder myAlertDialog = new AlertDialog.Builder(act);
-        myAlertDialog.setTitle(act.getString(R.string.dialog_picture_title));
-        myAlertDialog.setMessage(act.getString(R.string.dialog_picture_message));
-
-        myAlertDialog.setPositiveButton(act.getString(R.string.dialog_picture_gallery),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        ImageProcessor.openGallery(act);
-                    }
-                }
-        );
-        myAlertDialog.setNegativeButton(act.getString(R.string.dialog_picture_camera),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        ImageProcessor.openCamera(act);
-                    }
-                }
-        );
-        myAlertDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                Logger.d("myAlertDialog onCancel");
-                if (isClose) {
-                    act.finish();
-                }
-            }
-        });
-        myAlertDialog.show();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

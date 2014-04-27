@@ -17,16 +17,16 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp">
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp">
 
-            <ImageView android:layout_width="140dp"
-                       android:layout_height="140dp"
+            <ImageView android:layout_width="100dp"
+                       android:layout_height="100dp"
                        android:id="@+id/issue_imageView"
                        android:scaleType="centerInside"
                        android:background="@android:color/darker_gray"
@@ -74,7 +74,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginRight="90dp">
+                    android:layout_marginRight="10dp">
 
                 <EditText
                         android:layout_width="wrap_content"
@@ -86,99 +86,170 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ADD"
-                        android:id="@+id/issue_btn_add_tag"
-                        />
-
+                        android:id="@+id/issue_btn_add_tag"/>
             </LinearLayout>
-
-
-            <Spinner android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_marginRight="90dp"
-                     android:layout_marginTop="10dp"/>
-
-
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:orientation="horizontal"
-                  android:layout_marginTop="40dp">
+    <!--<Spinner android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginRight="10dp"-->
+    <!--android:layout_marginLeft="10dp"-->
+    <!--android:layout_marginTop="10dp"/>-->
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/tagsContainer">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#tag1"
+                android:textSize="20dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#tagwsd2"
+                android:textSize="20dp"
+                android:layout_marginLeft="5dp"/>
+    </LinearLayout>
 
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="Participants: "
-                  android:textStyle="bold"
-                  android:textSize="20dp"
-                  android:layout_marginLeft="90dp"/>
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Participants: "
+                      android:textStyle="bold"
+                      android:textSize="20dp"
+                      android:layout_marginLeft="10dp"/>
 
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:textSize="20dp"
-                  android:text="0"
-                  android:id="@+id/issue_participants_text"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:textSize="20dp"
+                      android:text="0"
+                      android:layout_marginLeft="10dp"
+                      android:id="@+id/issue_participants_text"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="1"
+                      android:orientation="vertical">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Donation: "
+                      android:textStyle="bold"
+                      android:textSize="20dp"
+                      android:layout_marginLeft="10dp"/>
 
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="Donation: "
-                  android:textStyle="bold"
-                  android:textSize="20dp"
-                  android:layout_marginLeft="120dp"/>
-
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:textSize="20dp"
-                  android:text="0"
-                  android:id="@+id/issue_donation_text"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:textSize="20dp"
+                      android:text="0"
+                      android:layout_marginLeft="10dp"
+                      android:id="@+id/issue_donation_text"/>
+        </LinearLayout>
     </LinearLayout>
 
 
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:id="@+id/details_label"
               android:text="DETAILS"
               style="?android:listSeparatorTextViewStyle"
-              android:layout_marginTop="20dp"/>
+              android:layout_marginTop="5dp"/>
 
     <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="match_parent"
+                  android:layout_height="wrap_content"
                   android:orientation="vertical">
-
-
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/issue_details_textView"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:hint="Add description"/>
 
+        <LinearLayout android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+            <Button android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="Add event date"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/issue_btn_date"/>
+            <Button android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="DONATE"
+                    android:id="@+id/issue_btn_donate"/>
 
-        <Button android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:layout_marginTop="10dp"
-                android:text="Add event date"
-                android:id="@+id/issue_btn_date"/>
-
-
-        <Button android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:text="DONATE"
-                android:id="@+id/issue_btn_donate"/>
-
-        <Button android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:text="I WILL BE THERE"
-                android:id="@+id/i_will_be_there_button"/>
-
+            <Button android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="I WILL BE THERE"
+                    android:layout_marginRight="5dp"
+                    android:id="@+id/i_will_be_there_button"/>
+        </LinearLayout>
     </LinearLayout>
 
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/comments_label"
+              android:text="COMMENTS"
+              style="?android:listSeparatorTextViewStyle"
+              android:layout_marginTop="20dp"/>
+
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/bottomLin">
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                <EditText
+                        android:id="@+id/commentInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginLeft="5dp"
+                        android:hint="Enter your comment here"
+                        />
+                <Button
+                        android:id="@+id/addCommentButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:text=">"
+                        android:layout_weight="1"/>
+            </LinearLayout>
+        </LinearLayout>
+        <ListView
+                android:id="@+id/lvComments"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/bottomLin"/>
+    </RelativeLayout>
 </LinearLayout>

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.parse.ParseUser;
-import com.parse.anywall.model.Tag;
 
 /**
  * Activity which starts an intent for either the logged in (MainActivity) or logged out
@@ -18,11 +17,6 @@ public class DispatchActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Tag t = new Tag();
-        t.setName("#ями_на_дорогах");
-        t.setCount(0);
-        t.saveInBackground();
 
         // Check if there is current user info
         if (ParseUser.getCurrentUser() != null) {

@@ -1,10 +1,10 @@
 package com.parse.anywall.model;
 
 
-import com.parse.ParseClassName;
-import com.parse.ParseFile;
-import com.parse.ParseObject;
+import com.parse.*;
 import org.json.JSONArray;
+
+import java.io.Serializable;
 
 
 /**
@@ -12,7 +12,7 @@ import org.json.JSONArray;
  */
 
 @ParseClassName("Issues")
-public class Issue extends ParseObject {
+public class Issue extends ParseObject implements Serializable {
 
     public void setTitle(String title) {
         put("title", title);
@@ -20,6 +20,14 @@ public class Issue extends ParseObject {
 
     public String getTitle() {
         return getString("title");
+    }
+
+    public void setDetail(String detail) {
+        put("details", detail);
+    }
+
+    public String getDetail() {
+        return getString("details");
     }
 
     public ParseFile getPhoto() {
@@ -61,5 +69,22 @@ public class Issue extends ParseObject {
     public void setDate(long date) {
         put("date", date);
 
+    }
+
+    public void setAuthor(ParseUser author) {
+        put("author", author);
+    }
+
+    public ParseUser getAuthor() {
+        return getParseUser("author");
+    }
+
+
+    public ParseGeoPoint getLocation() {
+        return getParseGeoPoint("location");
+    }
+
+    public void setLocation(ParseGeoPoint value) {
+        put("location", value);
     }
 }

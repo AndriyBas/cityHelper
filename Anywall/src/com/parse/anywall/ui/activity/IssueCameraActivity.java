@@ -8,9 +8,6 @@ import android.view.WindowManager;
 import com.parse.anywall.R;
 import com.parse.anywall.camera.IssueCameraFragment;
 
-/**
- * Created by badgateway on 26.04.14.
- */
 public class IssueCameraActivity extends FragmentActivity {
 
     @Override
