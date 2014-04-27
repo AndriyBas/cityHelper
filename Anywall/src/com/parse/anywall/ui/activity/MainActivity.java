@@ -122,6 +122,8 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
 
     private Marker activeMarker;
 
+    private static final String PARSE_ISSUE_ID = "parse_issue_id";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -177,6 +179,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
         // Disable automatic loading when the adapter is attached to a view.
         posts.setAutoload(false);
 
+
         // Disable pagination, we'll manage the query limit ourselves
         posts.setPaginationEnabled(false);
 
@@ -194,6 +197,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
                 if (currentObjectId == selectedObjectId) {
 
                     Intent i = new Intent(MainActivity.this, IssueActivity.class);
+                    i.putExtra(PARSE_ISSUE_ID, posts.getItemId(position));
                     startActivity(i);
                     return;
                 }

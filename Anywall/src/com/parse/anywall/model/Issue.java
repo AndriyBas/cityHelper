@@ -1,79 +1,65 @@
 package com.parse.anywall.model;
 
-import com.parse.anywall.model.photo.Photo;
 
-import java.util.Date;
-import java.util.UUID;
+import com.parse.ParseClassName;
+import com.parse.ParseFile;
+import com.parse.ParseObject;
+import org.json.JSONArray;
+
 
 /**
  * Created by badgateway on 26.04.14.
  */
-public class Issue {
 
-    private static final String JSON_ID = "id";
-    private static final String JSON_TITLE = "title";
-    private static final String JSON_STATUS = "tratus";
-    private static final String JSON_DATE = "date";
-    private static final String JSON_PHOTO = "photo";
+@ParseClassName("Issues")
+public class Issue extends ParseObject {
 
-    private static final String JSON_TAGS = "tags";
-
-
-    private Photo mPhoto;
-    private UUID mId;
-    private String mTitle;
-    private Date mDate;
-    private String mStatus;
-    private String mSuspect;
-
-    public Issue() {
-        mId = UUID.randomUUID();
-        mDate = new Date();
-    }
-
-
-
-    public UUID getId() {
-        return mId;
+    public void setTitle(String title) {
+        put("title", title);
     }
 
     public String getTitle() {
-        return mTitle;
+        return getString("title");
     }
 
-    public void setTitle(String title) {
-        mTitle = title;
+    public ParseFile getPhoto() {
+        return getParseFile("photo");
     }
 
-    public Date getDate() {
-        return mDate;
+    public void setPhoto(ParseFile photo) {
+        put("photo", photo);
     }
 
-    public void setDate(Date date) {
-        mDate = date;
+    public JSONArray getTags() {
+        return getJSONArray("tags");
     }
 
-
-
-    public Photo getPhoto() {
-        return mPhoto;
+    public void setTags(JSONArray tags) {
+        put("tags", tags);
     }
 
-    public void setPhoto(Photo photo) {
-        mPhoto = photo;
+    public void setParticipants(int p) {
+        put("participants", p);
     }
 
-    public String getSuspect() {
-        return mSuspect;
+    public int getParticipants() {
+        return getInt("participants");
     }
 
-    public void setSuspect(String suspect) {
-        mSuspect = suspect;
+    public void setDonation(int d) {
+        put("donation", d);
     }
 
-    @Override
-    public String toString() {
-        return mTitle;
+    public int getDonation() {
+        return getInt("donation");
+    }
+
+    public long getDate() {
+        return getLong("date");
+    }
+
+    public void setDate(long date) {
+        put("date", date);
 
     }
 }
