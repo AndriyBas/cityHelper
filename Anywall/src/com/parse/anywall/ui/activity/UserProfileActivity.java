@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.text.method.PasswordTransformationMethod;
@@ -13,11 +14,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
-import com.parse.ParseUser;
+import com.parse.*;
 import com.parse.anywall.Const;
 import com.parse.anywall.Logger;
 import com.parse.anywall.R;
 import com.parse.anywall.model.ImageProcessor;
+import com.parse.anywall.model.UserData;
+import com.squareup.picasso.Picasso;
+
+import java.io.ByteArrayOutputStream;
 
 
 public class UserProfileActivity extends Activity implements View.OnClickListener {
@@ -31,6 +36,10 @@ public class UserProfileActivity extends Activity implements View.OnClickListene
     private TextView emailValue;
     private Button chngPass;
     private Activity activity;
+    private LinearLayout rate;
+    private TextView rateValue;
+
+    private UserData uData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +50,7 @@ public class UserProfileActivity extends Activity implements View.OnClickListene
         setupPrefs();
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     private void initPrefs() {
@@ -51,6 +61,40 @@ public class UserProfileActivity extends Activity implements View.OnClickListene
         email = (LinearLayout) findViewById(R.id.prefEmail);
         emailValue = (TextView) findViewById(R.id.pref_email_value);
         chngPass = (Button) findViewById(R.id.chngPass);
+        rate = (LinearLayout) findViewById(R.id.prefRate);
+        rateValue = (TextView) findViewById(R.id.pref_rate_value);
+
+        if (ParseUser.getCurrentUser() != null) {
+            nameValue.setText(ParseUser.getCurrentUser().getUsername());
+            emailValue.setText(ParseUser.getCurrentUser().getEmail());
+        }
+
+        ParseQuery<UserData> query = ParseQuery.getQuery(UserData.class);
+
+        query.whereEqualTo("userOK", ParseUser.getCurrentUser());
+
+        query.getFirstInBackground(new GetCallback<UserData>() {
+            @Override
+            public void done(UserData userData, ParseException e) {
+                if (e == null) {
+                    uData = userData;
+                    ParseFile f = uData.getPhoto();
+
+                    if (f != null) {
+                        Logger.e(f.getUrl());
+                        Picasso.with(activity)
+                                .load(Uri.parse(f.getUrl()))
+                                .resize(300, 300)
+                                .centerCrop()
+                                .placeholder(R.drawable.ic_launcher)
+                                .into(avatar);
+                    }
+                    rateValue.setText("" + uData.getRating());
+                } else {
+                    Logger.e(e.getMessage());
+                }
+            }
+        });
     }
 
 
@@ -145,7 +189,6 @@ public class UserProfileActivity extends Activity implements View.OnClickListene
             }
         }
     }
- 
 
 
     @Override
@@ -172,6 +215,17 @@ public class UserProfileActivity extends Activity implements View.OnClickListene
     }
 
     private void saveClicked() {
+//        if (uData==null) uData
+        if (bitmapAvatar != null) {
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmapAvatar.compress(Bitmap.CompressFormat.JPEG, 35, stream);
+            byte[] data = stream.toByteArray();
+            ParseFile file = new ParseFile(System.currentTimeMillis() + ".jpeg", data);
+            uData.setPhoto(file);
+        } else {
+            Logger.e("need add photo");
+        }
+        uData.saveInBackground();
         ParseUser.getCurrentUser().saveEventually();
         Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
     }
@@ -184,8 +238,9 @@ public class UserProfileActivity extends Activity implements View.OnClickListene
                 Logger.d("requestCode == FROM_CAMERA");
                 if (data != null) {
                     Bundle extras = data.getExtras();
-                    Bitmap bitMap = (Bitmap) extras.get("data");
-                    avatar.setImageBitmap(bitMap);
+                    Bitmap bitmap = (Bitmap) extras.get("data");
+                    bitmapAvatar = bitmap;
+                    avatar.setImageBitmap(bitmap);
                 } else {
                     Logger.d("from camera data == null");
                 }
@@ -194,6 +249,7 @@ public class UserProfileActivity extends Activity implements View.OnClickListene
                 Logger.d("requestCode == FROM_GALLERY");
                 try {
                     Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(data.getData()));
+                    bitmapAvatar = bitmap;
                     avatar.setImageBitmap(bitmap);
                 } catch (Exception e) {
                     Logger.e(getClass().getSimpleName() + ":  Error while FROM_GALLERY");

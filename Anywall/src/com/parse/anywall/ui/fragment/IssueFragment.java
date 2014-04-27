@@ -2,6 +2,7 @@ package com.parse.anywall.ui.fragment;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,6 +27,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.ByteArrayOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 
 public class IssueFragment extends Fragment implements View.OnClickListener {
@@ -70,6 +74,12 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
 
     private Spinner statusSpinner;
 
+    int Year;
+    int month;
+    int day;
+
+    MenuItem saveItem;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +96,7 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
 
         textViewAuthor.setText("АВТОР : " + mIssue.getAuthor().getUsername());
         editTextTitle.setText(mIssue.getTitle());
+
         mTextViewParticipants.setText(Integer.toString(mIssue.getParticipants()));
         mTextViewDonation.setText(Integer.toString(mIssue.getDonation()));
 
@@ -156,24 +167,31 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
 //            e.printStackTrace();
 //        }
 
+        if (!ParseUser.getCurrentUser().getObjectId().equals(mIssue.getAuthor().getObjectId())) {
+
+            statusSpinner.setEnabled(false);
+            editTextTitle.setEnabled(false);
+            editTextTag.setEnabled(false);
+            mButtonAddTag.setEnabled(false);
+            mEditTextDetails.setEnabled(false);
+            imageButtonTakePhoto.setEnabled(false);
+            mButtonDate.setEnabled(false);
+            saveItem.setEnabled(false);
+        }
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View v = inflater.inflate(R.layout.fragment_issue, container, false);
         init(v);
         setupViews();
-
-
         return v;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         try {
             populateFragment();
         } catch (Exception e) {
@@ -238,7 +256,14 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
                 android.R.layout.simple_spinner_dropdown_item,
                 statuses);
         statusSpinner.setAdapter(spinnerArrayAdapter);
+
         statusSpinner.setSelection(3);
+        addComment.setOnClickListener(this);
+        imageButtonTakePhoto.setOnClickListener(this);
+        mButtonAddTag.setOnClickListener(this);
+        mButtonDate.setOnClickListener(this);
+        mButtonDonate.setOnClickListener(this);
+        mButtonIWillBeThere.setOnClickListener(this);
     }
 
     private void init(View v) {
@@ -275,6 +300,8 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
         mTextViewParticipants = (TextView) v.findViewById(R.id.issue_participants_text);
 
         statusSpinner = (Spinner) v.findViewById(R.id.statuSpinner);
+
+        saveItem = (MenuItem) v.findViewById(R.id.menu_item_save_issue);
     }
 
 
@@ -288,20 +315,6 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case (R.id.details_label): {
-                if (hide == false) {
-                    mButtonDonate.setVisibility(View.GONE);
-                    mButtonDate.setVisibility(View.GONE);
-                    mButtonIWillBeThere.setVisibility(View.GONE);
-                    hide = true;
-                } else {
-                    mButtonDonate.setVisibility(View.VISIBLE);
-                    mButtonDonate.setVisibility(View.VISIBLE);
-                    mButtonDonate.setVisibility(View.VISIBLE);
-                    hide = false;
-                }
-                break;
-            }
             case (R.id.addCommentButton): {
                 if (commentInput.getText() != null && commentInput.getText().toString().length() > 0) {
 
@@ -317,7 +330,6 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
                     c.saveInBackground(new SaveCallback() {
                         @Override
                         public void done(ParseException e) {
-//                            mCommentAdapter.notifyDataSetInvalidated();
                             doCommentQuery();
                         }
                     });
@@ -392,7 +404,32 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
             }
+            case (R.id.issue_btn_date): {
+
+                DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        Year = year;
+                        month = monthOfYear;
+                        day = dayOfMonth;
+                        updateDisplay();
+                    }
+                };
+                Calendar cal = Calendar.getInstance();
+                Year = cal.get(Calendar.YEAR);
+                month = cal.get(Calendar.MONTH);
+                day = cal.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog d = new DatePickerDialog(activity, mDateSetListener, Year, month, day);
+                d.show();
+                break;
+
+            }
         }
+    }
+
+    private void updateDisplay() {
+        GregorianCalendar c = new GregorianCalendar(Year, month, day);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
+        mButtonDate.setText(sdf.format(c.getTime()));
     }
 
     private void doCommentQuery() {
@@ -509,4 +546,6 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
 
         }
     }
+
+
 }

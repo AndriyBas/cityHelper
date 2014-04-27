@@ -35,6 +35,7 @@ public class Application extends android.app.Application {
         ParseObject.registerSubclass(CityUser.class);
         ParseObject.registerSubclass(Issue.class);
         ParseObject.registerSubclass(Comment.class);
+        ParseObject.registerSubclass(UserData.class);
         Parse.initialize(this, "iTUHhvYuaOdpVQz5aQkvnJNEd7hxZTyBxqygUPXK",
                 "Le3XjYFDDJ5ZzOkUSZbqzO1ybdYfjxdqgdwAxJ40");
         preferences = getSharedPreferences("com.parse.anywall", Context.MODE_PRIVATE);

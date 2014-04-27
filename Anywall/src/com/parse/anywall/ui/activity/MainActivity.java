@@ -878,6 +878,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
         getMenuInflater().inflate(R.menu.main, menu);
         menu.findItem(R.id.action_user).setOnMenuItemClickListener(this);
         menu.findItem(R.id.action_settings).setOnMenuItemClickListener(this);
+        menu.findItem(R.id.action_top).setOnMenuItemClickListener(this);
         menu.findItem(R.id.menu_item_add_task).setOnMenuItemClickListener(this);
         return true;
     }
@@ -915,6 +916,11 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
             }
             case (R.id.action_user): {
                 startActivity(new Intent(MainActivity.this, UserProfileActivity.class));
+                return true;
+            }
+
+            case (R.id.action_top): {
+                startActivity(new Intent(MainActivity.this, RateActivity.class));
                 return true;
             }
             case (R.id.menu_item_add_task): {

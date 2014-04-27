@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
@@ -32,34 +33,16 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:background="@color/dark_grey"/>
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:clickable="true"
-                    android:id="@+id/prefSetAvatar"
-                    android:background="@drawable/pref_background">
-                <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:id="@+id/avatar"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:src="@drawable/ic_user"/>
+            <ImageView
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:id="@+id/avatarPreview"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/ic_user"/>
 
-                <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="5dp"
-                        android:text="@string/pref_set_avatar"
-                        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
-            </LinearLayout>
+
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="fill_parent"
@@ -103,10 +86,11 @@
                 <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/pref_email_value"
+                        android:id="@+id/prev_email_value"
                         android:textColor="@color/dark_grey"
                         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
             </LinearLayout>
+
 
             <LinearLayout
                     android:orientation="vertical"
@@ -117,25 +101,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:clickable="true"
-                    android:id="@+id/prefPass"
-                    android:background="@drawable/pref_background">
-                <Button
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/chngPass"
-                        android:text="Змінити пароль"
-                        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:clickable="true"
-                    android:id="@+id/prefRate"
+                    android:id="@+id/prevRate"
                     android:background="@drawable/pref_background">
                 <TextView
                         android:layout_width="fill_parent"
@@ -145,7 +111,7 @@
                 <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/pref_rate_value"
+                        android:id="@+id/prev_rate_value"
                         android:textColor="@color/dark_grey"
                         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
             </LinearLayout>

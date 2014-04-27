@@ -7,11 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.parse.ParseACL;
-import com.parse.ParseException;
-import com.parse.ParseUser;
-import com.parse.SignUpCallback;
+import com.parse.*;
 import com.parse.anywall.R;
+import com.parse.anywall.model.UserData;
 
 /**
  * Activity which displays a login screen to the user.
@@ -76,7 +74,7 @@ public class SignUpActivity extends Activity {
                 dlg.show();
 
                 // Set up a new Parse user
-                ParseUser user = new ParseUser();
+                final ParseUser user = new ParseUser();
 
                 ParseACL acl = new ParseACL();
                 acl.setPublicReadAccess(true);
@@ -98,6 +96,16 @@ public class SignUpActivity extends Activity {
                             Intent intent = new Intent(SignUpActivity.this, DispatchActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
+                            UserData userData = new UserData();
+                            userData.setUser(user);
+//                            userData.setPhoto(null);
+                            userData.setRating(0);
+                            userData.saveInBackground(new SaveCallback() {
+                                @Override
+                                public void done(ParseException e) {
+//                                    Logger.e("first uData Save - " + e.getMessage());
+                                }
+                            });
                         }
                     }
                 });
