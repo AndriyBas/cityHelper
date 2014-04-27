@@ -2,6 +2,7 @@ package com.parse.anywall.ui.fragment;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,7 +25,10 @@ import com.parse.anywall.model.Issue;
 import com.parse.anywall.ui.activity.MainActivity;
 import com.parse.anywall.ui.adapters.CommentAdapter;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class IssueFragment extends Fragment implements View.OnClickListener {
 
@@ -61,6 +65,10 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
     private Button mButtonIWillBeThere;
 
     private LinearLayout tagsContainer;
+
+    int Year;
+    int month;
+    int day;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -125,6 +133,7 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
         addComment.setOnClickListener(this);
         imageButtonTakePhoto.setOnClickListener(this);
         mButtonAddTag.setOnClickListener(this);
+        mButtonDate.setOnClickListener(this);
         mButtonDonate.setOnClickListener(this);
         mButtonIWillBeThere.setOnClickListener(this);
     }
@@ -215,7 +224,32 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
             }
+            case (R.id.issue_btn_date): {
+
+                DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+                    public void onDateSet(DatePicker view, int year,  int monthOfYear, int dayOfMonth) {
+                        Year = year;
+                        month = monthOfYear;
+                        day = dayOfMonth;
+                        updateDisplay();
+                    }
+                };
+                Calendar cal = Calendar.getInstance();
+                Year = cal.get(Calendar.YEAR);
+                month = cal.get(Calendar.MONTH);
+                day = cal.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog d = new DatePickerDialog(activity, mDateSetListener, Year, month, day);
+                d.show();
+                break;
+
+            }
         }
+    }
+
+    private void updateDisplay() {
+        GregorianCalendar c = new GregorianCalendar(Year, month, day);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
+        mButtonDate.setText(sdf.format(c.getTime()));
     }
 
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {

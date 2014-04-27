@@ -33,7 +33,7 @@
                        android:cropToPadding="true"/>
 
             <ImageButton
-                    android:layout_width="match_parent"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:src="@android:drawable/ic_menu_camera"
                     android:id="@+id/issue_imageButton"/>
