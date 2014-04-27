@@ -77,7 +77,7 @@
                 android:name=".ui.activity.SignUpOrLogInActivity"
                 android:label="@string/app_name"
                 android:screenOrientation="portrait"
-                android:theme="@android:style/Theme.Holo">
+                >
         </activity>
         <activity
                 android:name=".ui.activity.SettingsActivity"

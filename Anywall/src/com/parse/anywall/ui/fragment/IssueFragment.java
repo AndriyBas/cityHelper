@@ -27,6 +27,7 @@ import org.json.JSONException;
 
 import java.io.ByteArrayOutputStream;
 
+
 public class IssueFragment extends Fragment implements View.OnClickListener {
 
     private boolean hide = false;
@@ -75,6 +76,7 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
         setRetainInstance(true);
         setHasOptionsMenu(true);
 
+
         mIssue = MainActivity.CURRENT_ISSUE;
 
 
@@ -82,14 +84,15 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
 
     private void populateFragment() {
 
-        textViewAuthor.setText("AUTHOR : " + mIssue.getAuthor().getUsername());
+        textViewAuthor.setText("АВТОР : " + mIssue.getAuthor().getUsername());
         editTextTitle.setText(mIssue.getTitle());
         mTextViewParticipants.setText(Integer.toString(mIssue.getParticipants()));
         mTextViewDonation.setText(Integer.toString(mIssue.getDonation()));
 
         mEditTextDetails.setText(mIssue.getDetail());
 
-        statusSpinner.setSelection(1);
+
+        statusSpinner.setSelection(3);
         String status = mIssue.getStatus();
         if (status != null) {
             for (int i = 0; i < statuses.length; i++) {
@@ -99,6 +102,7 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
                 }
             }
         }
+
 
         tagsContainer.removeAllViews();
 
@@ -122,6 +126,7 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
         }
 
 //        try {
+
 
         ParseFile f = mIssue.getPhoto();
 
@@ -233,7 +238,7 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
                 android.R.layout.simple_spinner_dropdown_item,
                 statuses);
         statusSpinner.setAdapter(spinnerArrayAdapter);
-        statusSpinner.setSelection(1);
+        statusSpinner.setSelection(3);
     }
 
     private void init(View v) {
@@ -272,11 +277,13 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
         statusSpinner = (Spinner) v.findViewById(R.id.statuSpinner);
     }
 
+
     @Override
     public void onResume() {
         super.onResume();
         mCommentAdapter.loadObjects();
     }
+
 
     @Override
     public void onClick(View v) {

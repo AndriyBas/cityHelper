@@ -5,7 +5,7 @@
             android:id="@+id/menu_item_add_task"
             android:showAsAction="always|withText"
             android:icon="@android:drawable/ic_input_add"
-            android:title="Add post"
+            android:title="Додати пост"
             />
 
     <item

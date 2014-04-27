@@ -3,6 +3,8 @@ package com.parse.anywall.ui.activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
@@ -12,13 +14,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -42,7 +40,8 @@ import java.util.*;
 
 public class MainActivity extends CityHelperBaseActivity implements LocationListener,
         GooglePlayServicesClient.ConnectionCallbacks,
-        GooglePlayServicesClient.OnConnectionFailedListener, MenuItem.OnMenuItemClickListener, GoogleMap.OnInfoWindowClickListener {
+        GooglePlayServicesClient.OnConnectionFailedListener,
+        MenuItem.OnMenuItemClickListener, GoogleMap.OnInfoWindowClickListener {
 
     /*
      * Define a request code to send to Google Play services This code is returned in
@@ -122,8 +121,10 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
     // Adapter for the Parse query
     public static ParseQueryAdapter<Issue> mIssueAdapter;
 
+
     public static Issue CURRENT_ISSUE;
     public static ListView postsView;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -171,16 +172,34 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
                 if (view == null) {
                     view = View.inflate(getContext(), R.layout.item_task_post, null);
                 }
-//                TextView contentView = (TextView) view.findViewById(R.id.contentView);
-//                TextView usernameView = (TextView) view.findViewById(R.id.usernameView);
-//                contentView.setText(post.getText());
-//                usernameView.setText(post.getUser().getUsername());
+
+                ImageView issueImage = (ImageView) view.findViewById(R.id.item_post_image);
+                TextView title = (TextView) view.findViewById(R.id.item_post_title);
+                TextView status = (TextView) view.findViewById(R.id.status_text);
+                TextView description = (TextView) view.findViewById(R.id.item_post_desc);
+
+                title.setText(issue.getTitle());
+                status.setText("Статус: " + issue.getStatus());
+                description.setText("Опис: " + issue.getDetail());
+
+
+                try {
+                    if (issue.getPhoto() != null) {
+                        byte[] bytes = issue.getPhoto().getData();
+                        Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                        issueImage.setImageBitmap(bmp);
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
                 return view;
             }
         };
 
         // Disable automatic loading when the adapter is attached to a view.
         mIssueAdapter.setAutoload(false);
+
 
         // Disable pagination, we'll manage the query limit ourselves
         mIssueAdapter.setPaginationEnabled(false);
@@ -253,60 +272,47 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
         map.getMap().setOnInfoWindowClickListener(this);
 
 
-        // Set up the handler for the post button click
-        Button postButton = (Button) findViewById(R.id.postButton);
-        postButton.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-               /* // Only allow mIssueAdapter if we have a location
+        SeekBar seekBar = (SeekBar) findViewById(R.id.main_seek_bar);
+        seekBar.setProgress((int) Application.getSearchDistance());
+
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                progress = Math.max(progress, 400);
+
+                seekBar.setProgress(progress);
+
+                radius = progress;
+
                 Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
-                if (myLoc == null) {
-                    Toast.makeText(MainActivity.this,
-                            "Please try again after your location appears on the map.", Toast.LENGTH_LONG).show();
-                    return;
+                if (myLoc != null) {
+                    LatLng latLng = new LatLng(myLoc.getLatitude(), myLoc.getLongitude());
+                    updateCircle(latLng);
+                    updateZoom(latLng);
                 }
-                final ParseGeoPoint myPoint = geoPointFromLocation(myLoc);
-                // Create the builder where the new post is entered
-                AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
-                alert.setTitle("Create a Post");
-                final EditText input = new EditText(MainActivity.this);
-                input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
-                alert.setView(input);
-                // Handle the dialog input
-                alert.setPositiveButton("Post", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Create a post.
-                        AnywallPost post = new AnywallPost();
-                        // Set the location to the current user's location
-                        post.setLocation(myPoint);
-                        post.setText(input.getText().toString());
-                        post.setUser(ParseUser.getCurrentUser());
-                        ParseACL acl = new ParseACL();
-                        // Give public read access
-                        acl.setPublicReadAccess(true);
-                        post.setACL(acl);
-                        // Save the post
-                        post.saveInBackground(new SaveCallback() {
-                            @Override
-                            public void done(ParseException e) {
-                                // Update the list view and the map
-                                doListQuery();
-                                doMapQuery();
-                            }
-                        });
-                    }
-                });
-                alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Do nothing.
-                    }
-                });
-                alert.create().show();*/
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
+
+
     }
 
     public static void requeryIssues(final List<String> statuses, final List<String> tags) {
 // Set up a customized query
+
+        mIssueAdapter.clear();
+        mIssueAdapter.notifyDataSetChanged();
+
         ParseQueryAdapter.QueryFactory<Issue> factory =
                 new ParseQueryAdapter.QueryFactory<Issue>() {
                     public ParseQuery<Issue> create() {
@@ -350,6 +356,7 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
                     }
                 };
 
+
         // Set up the query adapter
         mIssueAdapter = new ParseQueryAdapter<Issue>(Application.appContext, factory) {
             @Override
@@ -357,10 +364,27 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
                 if (view == null) {
                     view = View.inflate(getContext(), R.layout.item_task_post, null);
                 }
-//                TextView contentView = (TextView) view.findViewById(R.id.contentView);
-//                TextView usernameView = (TextView) view.findViewById(R.id.usernameView);
-//                contentView.setText(post.getText());
-//                usernameView.setText(post.getUser().getUsername());
+
+                ImageView issueImage = (ImageView) view.findViewById(R.id.item_post_image);
+                TextView title = (TextView) view.findViewById(R.id.item_post_title);
+                TextView status = (TextView) view.findViewById(R.id.status_text);
+                TextView description = (TextView) view.findViewById(R.id.item_post_desc);
+
+                title.setText(issue.getTitle());
+                status.setText("Статус: " + issue.getStatus());
+                description.setText("Опис: " + issue.getDetail());
+
+
+                try {
+                    if (issue.getPhoto() != null) {
+                        byte[] bytes = issue.getPhoto().getData();
+                        Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                        issueImage.setImageBitmap(bmp);
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
                 return view;
             }
         };
@@ -618,6 +642,13 @@ public class MainActivity extends CityHelperBaseActivity implements LocationList
             mIssueAdapter.loadObjects();
         }
     }
+
+
+    private void requeryMap() {
+
+
+    }
+
 
     /*
      * Set up the query to update the map view

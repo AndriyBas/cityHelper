@@ -1,39 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Anywall</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">City Helper</string>
+    <string name="action_settings">Налаштування</string>
     <string name="title_activity_sign_up_or_log_in">SignUpOrLogInActivity</string>
-    <string name="log_in">Log in</string>
-    <string name="sign_up">Sign up</string>
-    <string name="powered_by">Powered by</string>
-    <string name="parse">Parse</string>
-    <string name="slogan">The world is your wall</string>
-    <string name="title_activity_settings">Settings</string>
+    <string name="log_in">Вхід</string>
+    <string name="sign_up">Реєстрація</string>
+
+
+    <string name="title_activity_settings">Налаштування</string>
     <string name="feet_250">250 feet</string>
     <string name="feet_1000">1000 feet</string>
     <string name="feet_4000">4000 feet</string>
     <string name="search_distance">Search Distance</string>
-    <string name="log_out">Log out of Anywall</string>
-    <string name="post">Post</string>
-    <string name="post_out_of_range">Can\'t view post! Get closer.</string>
+    <string name="log_out">Вихід</string>
+    <string name="post">Пост</string>
+    <string name="post_out_of_range">Пост виходить за межі огляду, підійдіть ближче</string>
 
 
 
-    <string name="issue_title_hint">Enter a title for the isuue.</string>
-    <string name="issue_title_lable">TITLE</string>
-    <string name="issue_details_lable">DETAILS</string>
+    <string name="issue_title_hint">Введіть назву посту</string>
+    <string name="issue_title_lable">НАЗВА</string>
+    <string name="issue_details_lable">ДЕТАЛІ</string>
     <string name="take">Take!</string>
 
-    <string name="dialog_picture_title">Picture choose option</string>
-    <string name="dialog_picture_message">Take picture from</string>
-    <string name="dialog_picture_gallery">Gallery</string>
-    <string name="dialog_picture_camera">Camera</string>
+    <string name="dialog_picture_title">Додати картинку</string>
+    <string name="dialog_picture_message">Виберіть зображення :</string>
+    <string name="dialog_picture_gallery">Галерея</string>
+    <string name="dialog_picture_camera">Камера</string>
 
-    <string name="pref_profile">PROFILE</string>
+    <string name="pref_profile">ПРОФІЛЬ</string>
 
-    <string name="pref_set_avatar">Set avatar</string>
-    <string name="pref_email">E-mail</string>
-    <string name="pref_name">Name</string>
+    <string name="pref_set_avatar">Змінити аватар</string>
+    <string name="pref_email">Пошта</string>
+    <string name="pref_name">Ім’я</string>
 
 </resources>

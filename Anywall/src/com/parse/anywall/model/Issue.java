@@ -1,13 +1,16 @@
 package com.parse.anywall.model;
 
+
 import com.parse.*;
 import org.json.JSONArray;
 
 import java.io.Serializable;
 
+
 /**
  * Created by badgateway on 26.04.14.
  */
+
 @ParseClassName("Issues")
 public class Issue extends ParseObject implements Serializable {
 
@@ -65,6 +68,7 @@ public class Issue extends ParseObject implements Serializable {
 
     public void setDate(long date) {
         put("date", date);
+
     }
 
     public void setAuthor(ParseUser author) {
@@ -74,6 +78,7 @@ public class Issue extends ParseObject implements Serializable {
     public ParseUser getAuthor() {
         return getParseUser("author");
     }
+
 
     public ParseGeoPoint getLocation() {
         return getParseGeoPoint("location");

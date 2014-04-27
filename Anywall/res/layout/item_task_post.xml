@@ -28,6 +28,11 @@
                 android:textStyle="bold"
                 android:text="Розбиті дороги навколо КПІ"
                 />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/status_text"
+                  android:text="Статус: "
+                  />
 
         <TextView
                 android:id="@+id/item_post_desc"
@@ -37,14 +42,6 @@
                 android:text="Терміново потрібно відремонтувати дороги, бо п*яні студенти не можуть нормально повертатись додому"
                 />
 
-        <TextView
-                android:id="@+id/item_post_tags"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textStyle="italic"
-                android:text="#ями_на_дорогах"
-                />
 
     </LinearLayout>
 </LinearLayout>

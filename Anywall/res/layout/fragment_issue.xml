@@ -55,17 +55,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
                         android:layout_weight="2"
-                        android:text="Author : Serhii Ololo"
+                        android:text="Автор : "
                         android:layout_marginRight="10dp"
                         style="?android:listSeparatorTextViewStyle"/>
+
                 <TextView
                         android:id="@+id/issue_status"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
-                        android:text="Status:"
+                        android:text="        Статус :"
                         android:layout_marginRight="10dp"
-                        style="?android:listSeparatorTextViewStyle"/>
+                        style="?android:listSeparatorTextViewStyle"
+                        />
                 <Spinner
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
@@ -73,7 +75,7 @@
             </LinearLayout>
             <TextView android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:text="TITLE"
+                      android:text="Назва"
                       android:layout_marginRight="10dp"
                       style="?android:listSeparatorTextViewStyle"/>
 
@@ -85,7 +87,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
-                    android:hint="Enter a title for the issue"/>
+                    android:hint="Введіть назву для посту"/>
 
             <LinearLayout
                     android:layout_width="match_parent"
@@ -96,13 +98,13 @@
                 <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Add TAG"
+                        android:hint="Введіть тег"
                         android:layout_weight="2"
                         android:id="@+id/issue_editText_tag"/>
                 <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ADD"
+                        android:text="Додати"
                         android:id="@+id/issue_btn_add_tag"/>
             </LinearLayout>
         </LinearLayout>
@@ -119,12 +121,12 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="#tag1"
+                android:text="#дороги"
                 android:textSize="20dp"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="#tagwsd2"
+                android:text="#озеленення"
                 android:textSize="20dp"
                 android:layout_marginLeft="5dp"/>
     </LinearLayout>
@@ -141,7 +143,7 @@
                 android:orientation="vertical">
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Participants: "
+                      android:text="Кількість учасників: "
                       android:textStyle="bold"
                       android:textSize="20dp"
                       android:layout_marginLeft="10dp"/>
@@ -159,7 +161,7 @@
                       android:orientation="vertical">
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Donation: "
+                      android:text="Збір коштів: "
                       android:textStyle="bold"
                       android:textSize="20dp"
                       android:layout_marginLeft="10dp"/>
@@ -177,7 +179,7 @@
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:id="@+id/details_label"
-              android:text="DETAILS"
+              android:text="Деталі"
               style="?android:listSeparatorTextViewStyle"
               android:layout_marginTop="5dp"/>
 
@@ -192,7 +194,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:hint="Add description"/>
+                android:hint="Введіть додаткову інформацію"/>
 
         <LinearLayout android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
@@ -200,19 +202,19 @@
             <Button android:layout_width="match_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
-                    android:text="Add event date"
+                    android:text="ДОДАТИ ДАТУ"
                     android:layout_marginLeft="5dp"
                     android:id="@+id/issue_btn_date"/>
             <Button android:layout_width="match_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
-                    android:text="DONATE"
+                    android:text="ПОЖЕРТВУВАТИ"
                     android:id="@+id/issue_btn_donate"/>
 
             <Button android:layout_width="match_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
-                    android:text="I WILL BE THERE"
+                    android:text="Я ПРИЙДУ"
                     android:layout_marginRight="5dp"
                     android:id="@+id/i_will_be_there_button"/>
         </LinearLayout>
@@ -221,7 +223,7 @@
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:id="@+id/comments_label"
-              android:text="COMMENTS"
+              android:text="ОБГОВОРЕННЯ"
               style="?android:listSeparatorTextViewStyle"
               android:layout_marginTop="20dp"/>
 
@@ -249,7 +251,7 @@
                         android:layout_marginTop="6dp"
                         android:layout_marginBottom="4dp"
                         android:layout_marginLeft="5dp"
-                        android:hint="Enter your comment here"
+                        android:hint="Ведіть коментар тут"
                         />
                 <Button
                         android:id="@+id/addCommentButton"

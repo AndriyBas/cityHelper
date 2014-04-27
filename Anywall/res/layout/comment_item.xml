@@ -1,28 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+              android:orientation="horizontal"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:id="@+id/footerLayout">
-    <TextView
-            android:id="@+id/tvCommTxt"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Your Comment"
-            android:textSize="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="3dp">
-    </TextView>
-    <TextView
-            android:id="@+id/tvCommAuthor"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Your Comment"
-            android:textSize="12dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="3dp">
-    </TextView>
+
+    <ImageView android:layout_width="62dp"
+               android:layout_height="62dp"
+               android:id="@+id/comment_avatar"
+               android:src="@drawable/ic_user"/>
+
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:layout_marginLeft="20dp">
+        <TextView
+                android:id="@+id/tvCommTxt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Your Comment"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp">
+        </TextView>
+        <TextView
+                android:id="@+id/tvCommAuthor"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Your Comment"
+                android:textSize="12dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp">
+        </TextView>
+
+    </LinearLayout>
+
     <!--<LinearLayout-->
     <!--android:orientation="horizontal"-->
     <!--android:layout_width="fill_parent"-->
