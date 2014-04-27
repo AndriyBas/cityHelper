@@ -46,11 +46,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
 
-            <TextView android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="Author : Serhii Ololo"
-                      android:layout_marginRight="10dp"
-                      style="?android:listSeparatorTextViewStyle"/>
+            <TextView
+                    android:id="@+id/issue_author"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Author : Serhii Ololo"
+                    android:layout_marginRight="10dp"
+                    style="?android:listSeparatorTextViewStyle"/>
 
             <TextView android:layout_width="match_parent"
                       android:layout_height="wrap_content"
@@ -67,19 +69,25 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:hint="Enter a title for the issue"/>
-            <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:orientation="horizontal"
-                          android:layout_marginRight="90dp">
 
-                <EditText android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:hint="Add TAG"
-                          android:layout_weight="2"
-                          android:id="@+id/tag_editText"/>
-                <Button android:layout_width="wrap_content"
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginRight="90dp">
+
+                <EditText
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ADD"/>
+                        android:hint="Add TAG"
+                        android:layout_weight="2"
+                        android:id="@+id/issue_editText_tag"/>
+                <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ADD"
+                        android:id="@+id/issue_btn_add_tag"
+                        />
 
             </LinearLayout>
 
@@ -109,7 +117,7 @@
                   android:layout_height="wrap_content"
                   android:textSize="20dp"
                   android:text="0"
-                  android:id="@+id/participants_text"/>
+                  android:id="@+id/issue_participants_text"/>
 
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -122,7 +130,7 @@
                   android:layout_height="wrap_content"
                   android:textSize="20dp"
                   android:text="0"
-                  android:id="@+id/donation_text"/>
+                  android:id="@+id/issue_donation_text"/>
     </LinearLayout>
 
 
@@ -140,7 +148,7 @@
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/isuue_details_textView"
+                android:id="@+id/issue_details_textView"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
@@ -154,7 +162,7 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="10dp"
                 android:text="Add event date"
-                android:id="@+id/issue_date"/>
+                android:id="@+id/issue_btn_date"/>
 
 
         <Button android:layout_width="match_parent"
@@ -162,7 +170,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:text="DONATE"
-                android:id="@+id/issue_donate_button"/>
+                android:id="@+id/issue_btn_donate"/>
 
         <Button android:layout_width="match_parent"
                 android:layout_height="wrap_content"
