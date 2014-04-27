@@ -164,6 +164,7 @@ public class IssueFragment extends Fragment implements View.OnClickListener {
             statusSpinner.setEnabled(false);
             editTextTitle.setEnabled(false);
             editTextTag.setEnabled(false);
+            mButtonAddTag.setEnabled(false);
             mEditTextDetails.setEnabled(false);
             imageButtonTakePhoto.setEnabled(false);
             mButtonDate.setEnabled(false);

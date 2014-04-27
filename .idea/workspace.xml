@@ -31,8 +31,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="DEBUG" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="oyster" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c53aa87-f8ee-4501-97d5-436dc284c12b" name="Default" comment="" />
@@ -119,12 +118,25 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="UserData.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/UserData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="0" selection-start="459" selection-end="459" vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="680">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="IssueFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/fragment/IssueFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="475" column="22" selection-start="17082" selection-end="17092" vertical-scroll-proportion="15.038462" vertical-offset="8177" max-vertical-offset="8874">
+            <state line="166" column="42" selection-start="4932" selection-end="4932" vertical-scroll-proportion="0.0" vertical-offset="2558" max-vertical-offset="8942">
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#12417#12973#0" expanded="true" />
+                <element signature="e#12954#12955#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -133,34 +145,30 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="81" selection-start="3872" selection-end="3872" vertical-scroll-proportion="0.0" vertical-offset="1802" max-vertical-offset="15691">
+            <state line="864" column="42" selection-start="34824" selection-end="34824" vertical-scroll-proportion="0.0" vertical-offset="13741" max-vertical-offset="14824">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Comment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/Comment.java">
+      <file leaf-file-name="SignUpActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/SignUpActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="27" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="646">
-              <folding />
+            <state line="101" column="50" selection-start="4481" selection-end="4481" vertical-scroll-proportion="0.0" vertical-offset="1457" max-vertical-offset="2142">
+              <folding>
+                <element signature="e#3527#4887#0" expanded="true" />
+                <element signature="e#4536#4819#0" expanded="true" />
+                <element signature="e#4788#4789#0" expanded="true" />
+                <element signature="e#4868#4869#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Anywall/res/menu/main.xml">
+      <file leaf-file-name="Tag.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/Tag.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="38" selection-start="273" selection-end="273" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="391">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IssueActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/IssueActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="39" selection-start="843" selection-end="843" vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="850">
+            <state line="5" column="3" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
               <folding />
             </state>
           </provider>
@@ -169,16 +177,23 @@
       <file leaf-file-name="UserProfileActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/UserProfileActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="187" column="31" selection-start="6882" selection-end="6882" vertical-scroll-proportion="0.29166666" vertical-offset="2307" max-vertical-offset="2907">
-              <folding />
+            <state line="91" column="40" selection-start="3235" selection-end="3235" vertical-scroll-proportion="0.56666666" vertical-offset="833" max-vertical-offset="3842">
+              <folding>
+                <element signature="e#2526#3370#0" expanded="true" />
+                <element signature="e#3359#3360#0" expanded="true" />
+                <element signature="e#3954#3998#0" expanded="true" />
+                <element signature="e#5103#5148#0" expanded="true" />
+                <element signature="e#6936#7163#0" expanded="true" />
+                <element signature="e#7144#7145#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageProcessor.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/ImageProcessor.java">
+      <file leaf-file-name="Application.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="38" selection-start="4390" selection-end="4390" vertical-scroll-proportion="0.0" vertical-offset="1802" max-vertical-offset="2023">
+            <state line="32" column="45" selection-start="1008" selection-end="1008" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="833">
               <folding />
             </state>
           </provider>
@@ -194,7 +209,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Anywall/src/com/parse/anywall/Application.java" />
         <option value="$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/DispatchActivity.java" />
         <option value="$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/AnywallPost.java" />
         <option value="$PROJECT_DIR$/Anywall/res/values/dimens.xml" />
@@ -205,7 +219,6 @@
         <option value="$PROJECT_DIR$/../../threeboots/ThreeBoots/ThreeBoots/src/com/ThreeBoots/utils/ImageProcessor.java" />
         <option value="$PROJECT_DIR$/Anywall/src/com/parse/anywall/Logger.java" />
         <option value="$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/async/ShowImageAsync.java" />
-        <option value="$PROJECT_DIR$/Anywall/res/layout/activity_user.xml" />
         <option value="$PROJECT_DIR$/Anywall/src/com/parse/anywall/Const.java" />
         <option value="$PROJECT_DIR$/Anywall/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/IssueCameraActivity.java" />
@@ -220,7 +233,11 @@
         <option value="$PROJECT_DIR$/Anywall/res/layout/fragment_issue.xml" />
         <option value="$PROJECT_DIR$/Anywall/res/layout/activity_user_rate.xml" />
         <option value="$PROJECT_DIR$/Anywall/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/UserData.java" />
+        <option value="$PROJECT_DIR$/Anywall/res/layout/activity_user.xml" />
         <option value="$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/fragment/IssueFragment.java" />
+        <option value="$PROJECT_DIR$/Anywall/src/com/parse/anywall/Application.java" />
+        <option value="$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/SignUpActivity.java" />
         <option value="$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/UserProfileActivity.java" />
       </list>
     </option>
@@ -626,6 +643,7 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921174" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.68315303" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -647,7 +665,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -672,48 +689,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/ImageProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2023">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/fragment/IssueFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="18" selection-start="489" selection-end="489" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1037">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Anywall/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="30" selection-start="82" selection-end="82" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="748">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/IssueCameraActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="33" selection-start="915" selection-end="915" vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="714">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/camera/IssueCameraFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="35" selection-start="1405" selection-end="1405" vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="3842" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="733" column="30" selection-start="30035" selection-end="30035" vertical-scroll-proportion="0.0" vertical-offset="12461" max-vertical-offset="13787">
@@ -765,7 +740,14 @@
     <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/UserProfileActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="30" column="28" selection-start="943" selection-end="943" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="2465">
-          <folding />
+          <folding>
+            <element signature="e#2526#3370#0" expanded="true" />
+            <element signature="e#3359#3360#0" expanded="true" />
+            <element signature="e#3954#3998#0" expanded="true" />
+            <element signature="e#5103#5148#0" expanded="true" />
+            <element signature="e#6936#7163#0" expanded="true" />
+            <element signature="e#7144#7145#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -817,13 +799,6 @@
     <entry file="file://$PROJECT_DIR$/Anywall/libs/Parse-1.4.3-javadoc/com/parse/class-use/Parse.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/Application.java">
@@ -951,13 +926,6 @@
         <state line="71" column="37" selection-start="2493" selection-end="2493" vertical-scroll-proportion="0.4216028" vertical-offset="489" max-vertical-offset="6834" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/Tag.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="3" selection-start="101" selection-end="139" vertical-scroll-proportion="0.17" vertical-offset="0" max-vertical-offset="629">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/Comment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="27" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
@@ -982,13 +950,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="81" selection-start="3872" selection-end="3872" vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="14824">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="95" column="16" selection-start="3707" selection-end="3707" vertical-scroll-proportion="0.385" vertical-offset="1384" max-vertical-offset="2159">
@@ -1006,6 +967,48 @@
         <state />
       </provider>
     </entry>
+    <entry file="jar://$PROJECT_DIR$/Anywall/libs/Parse-1.4.3.jar!/com/parse/ParseUser.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="105" column="38" selection-start="5493" selection-end="5493" vertical-scroll-proportion="0.3464837" vertical-offset="1566" max-vertical-offset="2941">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/AnywallPost.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="13" selection-start="157" selection-end="157" vertical-scroll-proportion="0.2190016" vertical-offset="0" max-vertical-offset="884">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/CityUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="42" selection-start="356" selection-end="356" vertical-scroll-proportion="0.41062802" vertical-offset="0" max-vertical-offset="621">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/Tag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="3" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/DispatchActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="22" selection-start="563" selection-end="563" vertical-scroll-proportion="0.33333334" vertical-offset="177" max-vertical-offset="578">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="864" column="42" selection-start="34824" selection-end="34824" vertical-scroll-proportion="0.0" vertical-offset="13741" max-vertical-offset="14824">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/Issue.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="0" selection-start="326" selection-end="326" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1683">
@@ -1013,26 +1016,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/CityUser.java">
+    <entry file="file://$PROJECT_DIR$/Anywall/res/layout/activity_user.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="205" selection-end="205" vertical-scroll-proportion="0.255" vertical-offset="0" max-vertical-offset="600">
-          <folding />
+        <state line="142" column="42" selection-start="7259" selection-end="7259" vertical-scroll-proportion="0.67054266" vertical-offset="2068" max-vertical-offset="2703">
+          <folding>
+            <element signature="e#1135#1157#0" expanded="true" />
+            <element signature="e#2886#2911#0" expanded="true" />
+            <element signature="e#3786#3805#0" expanded="true" />
+            <element signature="e#5049#5069#0" expanded="true" />
+          </folding>
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/fragment/IssueFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="475" column="22" selection-start="17082" selection-end="17092" vertical-scroll-proportion="15.038462" vertical-offset="8177" max-vertical-offset="8874">
+        <state line="166" column="42" selection-start="4932" selection-end="4932" vertical-scroll-proportion="0.0" vertical-offset="2558" max-vertical-offset="8942">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#12417#12973#0" expanded="true" />
+            <element signature="e#12954#12955#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="45" selection-start="1008" selection-end="1008" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="833">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/model/UserData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="0" selection-start="459" selection-end="459" vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="680">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/SignUpActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="101" column="50" selection-start="4481" selection-end="4481" vertical-scroll-proportion="0.0" vertical-offset="1457" max-vertical-offset="2142">
+          <folding>
+            <element signature="e#3527#4887#0" expanded="true" />
+            <element signature="e#4536#4819#0" expanded="true" />
+            <element signature="e#4788#4789#0" expanded="true" />
+            <element signature="e#4868#4869#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Anywall/src/com/parse/anywall/ui/activity/UserProfileActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="187" column="31" selection-start="6882" selection-end="6882" vertical-scroll-proportion="0.29166666" vertical-offset="2307" max-vertical-offset="2907">
-          <folding />
+        <state line="91" column="40" selection-start="3235" selection-end="3235" vertical-scroll-proportion="0.56666666" vertical-offset="833" max-vertical-offset="3842">
+          <folding>
+            <element signature="e#2526#3370#0" expanded="true" />
+            <element signature="e#3359#3360#0" expanded="true" />
+            <element signature="e#3954#3998#0" expanded="true" />
+            <element signature="e#5103#5148#0" expanded="true" />
+            <element signature="e#6936#7163#0" expanded="true" />
+            <element signature="e#7144#7145#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

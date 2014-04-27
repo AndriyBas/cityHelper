@@ -126,7 +126,29 @@
                         android:text="Change password"
                         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
             </LinearLayout>
-
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:clickable="true"
+                    android:id="@+id/prefRate"
+                    android:background="@drawable/pref_background">
+                <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Rate"
+                        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
+                <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/pref_rate_value"
+                        android:textColor="@color/dark_grey"
+                        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
